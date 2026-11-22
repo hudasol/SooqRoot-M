@@ -73,11 +73,11 @@ export function HarvestCalendar() {
                 { value: 'list', label: 'List' },
               ]}
             />
-
-      <SummerGapView />
           </>
         }
       />
+
+      <SummerGapView />
 
       <Card padded={false}>
         <div className="flex items-center justify-between border-b border-charcoal-100 p-4 dark:border-charcoal-800">

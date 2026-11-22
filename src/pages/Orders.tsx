@@ -145,7 +145,7 @@ export function Orders() {
                   <th>Product</th>
                   <th className="text-end">Volume</th>
                   <th>Commitment coverage</th>
-                  <th className="text-end">Value</th>
+                  <th className="text-end">Value (estimate)</th>
                   <th>Delivery</th>
                   <th>Status</th>
                   <th />
@@ -192,7 +192,7 @@ export function Orders() {
                         </div>
                       </td>
                       <td className="text-end text-xs font-semibold tabular-nums">
-                        {formatAed(o.valueAed, { compact: true })}
+                        {formatAed(o.valueAed, { compact: true, plain: true })}
                       </td>
                       <td className="text-xs tabular-nums">{formatDate(o.requiredBy)}</td>
                       <td>

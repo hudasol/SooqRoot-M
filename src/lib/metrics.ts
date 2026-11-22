@@ -91,13 +91,18 @@ export function computeMetrics(orders: Order[], farms: Farm[]): NetworkMetrics {
 
 /* ---------------- formatting ---------------- */
 
-export function formatAed(value: number, opts?: { compact?: boolean }): string {
+/**
+ * AED amounts in this product are estimates unless a signed contract rate says otherwise,
+ * so the label is part of the text. Pass plain: true where the surrounding copy already says "(estimate)".
+ */
+export function formatAed(value: number, opts?: { compact?: boolean; plain?: boolean }): string {
+  const suffix = opts?.plain ? '' : ' (estimate)';
   if (opts?.compact) {
-    if (Math.abs(value) >= 1_000_000) return `AED ${(value / 1_000_000).toFixed(1)}M`;
-    if (Math.abs(value) >= 1_000) return `AED ${Math.round(value / 1_000)}K`;
-    return `AED ${value.toFixed(0)}`;
+    if (Math.abs(value) >= 1_000_000) return `AED ${(value / 1_000_000).toFixed(1)}M${suffix}`;
+    if (Math.abs(value) >= 1_000) return `AED ${Math.round(value / 1_000)}K${suffix}`;
+    return `AED ${value.toFixed(0)}${suffix}`;
   }
-  return `AED ${value.toLocaleString('en-AE', { maximumFractionDigits: 0 })}`;
+  return `AED ${value.toLocaleString('en-AE', { maximumFractionDigits: 0 })}${suffix}`;
 }
 
 export function formatQty(value: number, unit: string): string {

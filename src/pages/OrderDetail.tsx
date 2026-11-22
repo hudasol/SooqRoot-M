@@ -193,7 +193,7 @@ export function OrderDetail() {
             </div>
 
             <div className="mt-3">
-              <DataRow label="Order value" value={`${formatAed(order.valueAed)} (estimate)`} />
+              <DataRow label="Order value" value={formatAed(order.valueAed)} />
               <DataRow label="Confidence" value={`${order.confidence}%`} />
               <DataRow label="Required by" value={formatDate(order.requiredBy, 'long')} />
               <DataRow label="Created" value={formatDate(order.createdAt, 'long')} />

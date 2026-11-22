@@ -85,7 +85,7 @@ export function SustainabilityImpact() {
         <ImpactCard
           icon={<Coins size={17} />}
           label="Paid to UAE farms (estimate)"
-          value={formatAed(paidToFarms, { compact: true })}
+          value={formatAed(paidToFarms, { compact: true, plain: true })}
           hint="Order value less the SooqRoot software fee"
           accent="#5ca87e"
         />

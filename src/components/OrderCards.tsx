@@ -73,10 +73,10 @@ export function EconomicsCard({ order }: { order: Order }) {
         icon={<Coins size={16} />}
       />
       <div className="mt-3">
-        <DataRow label="Order value" value={`${formatAed(e.orderValueAed)} (estimate)`} />
-        <DataRow label="Paid to UAE farms" value={`${formatAed(e.paidToFarmsAed)} (estimate)`} />
-        <DataRow label="SooqRoot software fee" value={`${formatAed(e.feeAed)} (estimate), ${ECONOMICS.feePct}%`} />
-        <DataRow label="Logistics, paid to partners" value={`${formatAed(e.logisticsAed)} (estimate)`} />
+        <DataRow label="Order value" value={`${formatAed(e.orderValueAed, { plain: true })} (estimate)`} />
+        <DataRow label="Paid to UAE farms" value={`${formatAed(e.paidToFarmsAed, { plain: true })} (estimate)`} />
+        <DataRow label="SooqRoot software fee" value={`${formatAed(e.feeAed, { plain: true })} (estimate), ${ECONOMICS.feePct}%`} />
+        <DataRow label="Logistics, paid to partners" value={`${formatAed(e.logisticsAed, { plain: true })} (estimate)`} />
         <DataRow label="Farm share of order value" value={`${e.farmSharePct}% (estimate)`} />
       </div>
       <p className="mt-2 text-2xs text-charcoal-400">

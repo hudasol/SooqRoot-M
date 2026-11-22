@@ -70,7 +70,7 @@ export function SummerGapView() {
             <Legend wrapperStyle={{ fontSize: 11 }} />
             <ReferenceArea x1="Jun" x2="Sep" fill="#c99c57" fillOpacity={0.1} />
             {SERIES.map((s) => (
-              <Bar key={s.method} dataKey={s.method} stackId="a" fill={s.color} />
+              <Bar key={s.method} dataKey={s.method} stackId="a" fill={s.color} isAnimationActive={false} />
             ))}
           </BarChart>
         </ResponsiveContainer>
