@@ -10,7 +10,7 @@ import {
   BuyerOrderStep,
   CommitmentStep,
   FarmerStep,
-  ImpactStep,
+  ImpactStepExecutive,
   ProgressStep,
   PilotStep,
 } from './Steps';
@@ -85,7 +85,7 @@ export function Minister() {
       case 3:
         return <FarmerStep />;
       case 4:
-        return <ImpactStep />;
+        return <ImpactStepExecutive />;
       case 5:
         return <ProgressStep />;
       default:
