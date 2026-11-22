@@ -6,7 +6,9 @@ import {
   CalendarDays,
   ClipboardList,
   Cpu,
+  Flag,
   Gauge,
+  Handshake,
   Layers,
   Leaf,
   MessageSquare,
@@ -52,6 +54,7 @@ export const NAV: NavGroup[] = [
       { to: '/farms', label: 'Farms', icon: Sprout },
       { to: '/network', label: 'Supply Digital Twin', icon: Network },
       { to: '/harvest', label: 'Harvest Calendar', icon: CalendarDays },
+      { to: '/partners', label: 'Partner Network', icon: Handshake },
     ],
   },
   {
@@ -78,8 +81,9 @@ export const NAV: NavGroup[] = [
   {
     label: 'System',
     items: [
-      { to: '/scenario', label: 'Demo Scenario', icon: Sprout },
-      { to: '/recognition', label: 'Recognition', icon: Award },
+      { to: '/scenario', label: 'Guided Walkthrough', icon: Sprout },
+      { to: '/progress', label: 'Progress', icon: Award },
+      { to: '/pilot', label: 'Pilot Plan', icon: Flag },
       { to: '/settings', label: 'Settings', icon: Settings },
     ],
   },

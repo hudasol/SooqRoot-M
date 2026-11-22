@@ -20,6 +20,8 @@ interface LangValue {
   t: (en: string, ar: string) => string;
   /** Pick a field from a bilingual object. */
   pick: <T>(v: { en: T; ar: T }) => T;
+  /** Spread on a page root so right to left layout and the Arabic font apply. */
+  root: { dir: 'ltr' | 'rtl'; lang: Lang; className: string };
 }
 
 const Ctx = createContext<LangValue | null>(null);
@@ -41,6 +43,7 @@ export function LangProvider({ children }: { children: React.ReactNode }) {
       toggle,
       t: (en, ar) => (lang === 'ar' ? ar : en),
       pick: (v) => (lang === 'ar' ? v.ar : v.en),
+      root: { dir: lang === 'ar' ? 'rtl' : 'ltr', lang, className: lang === 'ar' ? 'font-ar' : '' },
     }),
     [lang, setLang, toggle]
   );

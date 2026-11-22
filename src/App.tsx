@@ -21,7 +21,9 @@ import { Analytics } from './pages/Analytics';
 import { SustainabilityImpact } from './pages/SustainabilityImpact';
 import { FarmerCopilot } from './pages/FarmerCopilot';
 import { DemoScenario } from './pages/DemoScenario';
-import { Recognition } from './pages/Recognition';
+import { Progress } from './pages/Progress';
+import { Pilot } from './pages/Pilot';
+import { Partners } from './pages/Partners';
 import { Settings } from './pages/Settings';
 import { Minister } from './pages/minister/Minister';
 import { LangProvider } from './lib/i18n';
@@ -61,7 +63,10 @@ export default function App() {
               <Route path="/impact" element={<SustainabilityImpact />} />
               <Route path="/copilot" element={<FarmerCopilot />} />
               <Route path="/scenario" element={<DemoScenario />} />
-              <Route path="/recognition" element={<Recognition />} />
+              <Route path="/progress" element={<Progress />} />
+              <Route path="/recognition" element={<Navigate to="/progress" replace />} />
+              <Route path="/pilot" element={<Pilot />} />
+              <Route path="/partners" element={<Partners />} />
               <Route path="/settings" element={<Settings />} />
             </Route>
           </Route>
