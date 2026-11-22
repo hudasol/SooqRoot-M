@@ -11,7 +11,8 @@ import {
   Progress,
   Segmented,
 } from '../components/ui';
-import { getProduct } from '../data/products';
+import { getProduct, supplyKindOf } from '../data/products';
+import { KindBadge, KindFilter, KindFilterBar } from '../components/KindBadge';
 import { productPhoto } from '../data/media';
 import { Avatar } from '../components/ui/Photo';
 import { buyerName } from '../data/buyers';
@@ -33,6 +34,7 @@ const STATUS_TONE: Record<Order['status'], Parameters<typeof Badge>[0]['tone']> 
 export function Orders() {
   const { orders, metrics } = useStore();
   const [filter, setFilter] = useState<Filter>('all');
+  const [kind, setKind] = useState<KindFilter>('all');
   const [query, setQuery] = useState('');
   const [sort, setSort] = useState<SortKey>('requiredBy');
 
@@ -41,6 +43,8 @@ export function Orders() {
     if (filter === 'open') list = list.filter((o) => o.status !== 'Delivered');
     if (filter === 'risk') list = list.filter((o) => o.health === 'risk' || o.status === 'At risk');
     if (filter === 'delivered') list = list.filter((o) => o.status === 'Delivered');
+
+    if (kind !== 'all') list = list.filter((o) => supplyKindOf(o.productId) === kind);
 
     const q = query.trim().toLowerCase();
     if (q) {
@@ -57,7 +61,7 @@ export function Orders() {
       return a.requiredBy.localeCompare(b.requiredBy);
     });
     return list;
-  }, [orders, filter, query, sort]);
+  }, [orders, filter, kind, query, sort]);
 
   const totals = useMemo(
     () => ({
@@ -88,6 +92,7 @@ export function Orders() {
 
       <Card padded={false}>
         <div className="flex flex-col gap-3 border-b border-charcoal-100 p-4 dark:border-charcoal-800 lg:flex-row lg:items-center lg:justify-between">
+          <KindFilterBar value={kind} onChange={setKind} />
           <Segmented
             value={filter}
             onChange={setFilter}
@@ -166,6 +171,7 @@ export function Orders() {
                         <span className="inline-flex items-center gap-2">
                           <Avatar src={productPhoto(o.productId, 48, 48)} alt={product.name} size={26} tint={product.color} fallback={product.emoji} />
                           {product.name}
+                          <KindBadge kind={supplyKindOf(o.productId)} className="ms-1.5" />
                           <span className="text-2xs text-charcoal-400">Grade {o.grade}</span>
                         </span>
                       </td>

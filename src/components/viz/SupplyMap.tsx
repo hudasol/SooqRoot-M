@@ -7,6 +7,7 @@ import { HEALTH_HEX } from '../ui';
 import { useStore } from '../../state/AppStore';
 import { allocatable } from '../../lib/engine';
 import { buyerPhoto, farmPhoto } from '../../data/media';
+import { Partner } from '../../data/partners';
 
 /* ============================================================
    SupplyMap, the real, interactive UAE supply network.
@@ -88,6 +89,8 @@ interface Props {
   intro?: boolean;
   /** Show the consolidation hub marker. */
   showHub?: boolean;
+  /** Partner layer: depots of the partners who collect, consolidate and deliver. */
+  partners?: Partner[];
   /** Stretch to the parent's height instead of using `height`. */
   fill?: boolean;
   className?: string;
@@ -102,6 +105,7 @@ export function SupplyMap({
   onSelectFarm,
   intro,
   showHub = true,
+  partners,
   fill = false,
   className = '',
 }: Props) {
@@ -336,11 +340,30 @@ export function SupplyMap({
       created.push(hub);
     }
 
+    for (const ptn of partners ?? []) {
+      const m = L.marker([ptn.hub.lat, ptn.hub.lng], {
+        icon: L.divIcon({
+          className: 'sr-pin-wrap',
+          iconSize: [18, 18],
+          iconAnchor: [9, 9],
+          html: '<div style="width:18px;height:18px;border-radius:5px;background:#c99c57;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.35)"></div>',
+        }),
+        title: ptn.name,
+        zIndexOffset: -50,
+      });
+      m.bindTooltip(
+        `<div class="sr-tip sr-tip--small"><div class="sr-tip__body"><div class="sr-tip__title">${esc(ptn.name)}</div><div class="sr-tip__meta">${esc(ptn.type)}: ${esc(ptn.capabilities.join(', ').replace(/_/g, ' '))}</div></div></div>`,
+        { className: 'sr-map-tip', direction: 'top', offset: [0, -10], opacity: 1 }
+      );
+      m.addTo(map);
+      created.push(m);
+    }
+
     return () => {
       created.forEach((m) => m.remove());
       markersRef.current.clear();
     };
-  }, [farms, buyers, committedByFarm, showHub]);
+  }, [farms, buyers, committedByFarm, showHub, partners]);
 
   /* ---------------- flows + particles ---------------- */
   useEffect(() => {

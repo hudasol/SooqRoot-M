@@ -1,4 +1,6 @@
 import { useMemo, useState } from 'react';
+import { KindBadge, KindFilter, KindFilterBar } from '../components/KindBadge';
+import { supplyKindOf } from '../data/products';
 import { Link } from 'react-router-dom';
 import { ChevronRight, LayoutGrid, List, MapPin, Search, Sprout } from 'lucide-react';
 import { useStore } from '../state/AppStore';
@@ -25,17 +27,19 @@ export function Farms() {
   const [view, setView] = useState<'grid' | 'table'>('grid');
   const [query, setQuery] = useState('');
   const [region, setRegion] = useState<'all' | Farm['emirate']>('all');
+  const [kind, setKind] = useState<KindFilter>('all');
 
   const rows = useMemo(() => {
     const q = query.trim().toLowerCase();
     return farms.filter((f) => {
       if (region !== 'all' && f.emirate !== region) return false;
+      if (kind !== 'all' && !f.capacity.some((c) => supplyKindOf(c.productId) === kind)) return false;
       if (!q) return true;
       return `${f.name} ${f.code} ${f.area} ${f.growingMethod} ${f.contactName}`
         .toLowerCase()
         .includes(q);
     });
-  }, [farms, query, region]);
+  }, [farms, query, region, kind]);
 
   const regions = useMemo(
     () => Array.from(new Set(farms.map((f) => f.emirate))),
@@ -64,6 +68,8 @@ export function Farms() {
           </>
         }
       />
+
+      <KindFilterBar value={kind} onChange={setKind} />
 
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex flex-wrap gap-1.5">
@@ -216,9 +222,14 @@ function FarmCard({ farm }: { farm: Farm }) {
       </div>
 
       <div className="flex flex-1 flex-col p-5 pt-4">
+      <div className="mb-2 flex flex-wrap gap-1">
+        {Array.from(new Set(farm.capacity.map((c) => supplyKindOf(c.productId)))).map((k) => (
+          <KindBadge key={k} kind={k} />
+        ))}
+      </div>
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-2xs text-charcoal-400">
         <span className="inline-flex items-center gap-1">
-          <MapPin size={11} /> {farm.area}
+          <MapPin size={11} /> {farm.area}, {farm.region}
         </span>
         <span>·</span>
         <span>{farm.distanceKm} km to collection</span>

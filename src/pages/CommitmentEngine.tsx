@@ -12,6 +12,7 @@ import {
   Sparkles,
   Target,
   Terminal,
+  Truck,
 } from 'lucide-react';
 import { useStore } from '../state/AppStore';
 import {
@@ -24,7 +25,9 @@ import {
   Progress,
   Select,
 } from '../components/ui';
-import { PRODUCTS, getProduct } from '../data/products';
+import { PRODUCTS, getProduct, supplyKindOf } from '../data/products';
+import { KindBadge, MethodTag } from '../components/KindBadge';
+import { QrCode } from '../components/QrCode';
 import { FARM_MAP } from '../data/farms';
 import { farmPhoto, productPhoto } from '../data/media';
 import { Avatar, Photo } from '../components/ui/Photo';
@@ -311,6 +314,8 @@ export function CommitmentEngine() {
                         >
                           {farm.name}
                         </Link>
+                        <KindBadge kind={supplyKindOf(req.productId)} />
+                        <MethodTag method={farm.growingMethod} />
                         <Badge tone={isBackup ? 'sand' : 'brand'}>{isBackup ? 'Backup' : 'Primary'}</Badge>
                         <span className="sr-num text-lg">
                           {a.qty.toLocaleString()}
@@ -341,6 +346,18 @@ export function CommitmentEngine() {
                         <span>·</span>
                         <span>{farm.fulfilmentRate}% fulfilment</span>
                       </div>
+
+                      {a.partnerChain ? (
+                        <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-2xs text-charcoal-500 dark:text-charcoal-400">
+                          <Truck size={11} />
+                          <span>Collected by <span className="font-semibold text-charcoal-700 dark:text-charcoal-200">{a.partnerChain.collection}</span></span>
+                          <span>Consolidated by <span className="font-semibold text-charcoal-700 dark:text-charcoal-200">{a.partnerChain.consolidation}</span></span>
+                          <span>Delivered by <span className="font-semibold text-charcoal-700 dark:text-charcoal-200">{a.partnerChain.delivery}</span></span>
+                          {a.partnerChain.coldChain ? (
+                            <span>Cold chain <span className="font-semibold text-sky-700 dark:text-sky-200">{a.partnerChain.coldChain}</span></span>
+                          ) : null}
+                        </div>
+                      ) : null}
 
                       {showAll ? (
                         <p className="mt-2 border-t border-charcoal-50 pt-2 text-2xs leading-relaxed text-charcoal-500 dark:border-charcoal-800 dark:text-charcoal-400">
@@ -396,6 +413,23 @@ export function CommitmentEngine() {
                       Issue commitments
                     </Button>
                   )}
+                </div>
+              ) : null}
+
+              {issued && showAll ? (
+                <div className="mt-4 rounded-xl border border-charcoal-100 p-3.5 dark:border-charcoal-800">
+                  <div className="sr-eyebrow mb-3">Batch passport QR codes</div>
+                  <div className="flex flex-wrap gap-3">
+                    {result.primary.map((a) => (
+                      <div key={a.batchId} className="flex items-center gap-2 text-2xs text-charcoal-500">
+                        <QrCode batchId={a.batchId} size={64} />
+                        <div>
+                          <div className="font-mono font-semibold text-charcoal-700 dark:text-charcoal-200">{a.batchId}</div>
+                          <div>{a.qty.toLocaleString()} {a.unit}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               ) : null}
             </>
@@ -515,6 +549,7 @@ export function CommitmentEngine() {
               <tr>
                 <th>Rank</th>
                 <th>Farm</th>
+                <th>Method</th>
                 <th>Harvest window</th>
                 <th>Available</th>
                 <th>Grade {req.grade}</th>
@@ -538,6 +573,9 @@ export function CommitmentEngine() {
                         {c.farm.name}
                       </Link>
                       <div className="text-2xs text-charcoal-400">{c.farm.area}</div>
+                    </td>
+                    <td>
+                      <MethodTag method={c.farm.growingMethod} />
                     </td>
                     <td className="text-2xs tabular-nums">
                       {formatDate(c.line.harvestWindowStart)}, {formatDate(c.line.harvestWindowEnd)}

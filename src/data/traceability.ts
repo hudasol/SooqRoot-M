@@ -132,7 +132,6 @@ function generated(): BatchPassport[] {
   const known = new Set(BASE_PASSPORTS.map((p) => p.batchId));
   const out: BatchPassport[] = [];
   for (const order of ORDERS) {
-    if (order.status === 'Demand received') continue;
     for (const a of order.allocations) {
       if (a.role !== 'primary' || known.has(a.batchId)) continue;
       const farm = FARM_MAP[a.farmId];

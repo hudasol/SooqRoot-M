@@ -12,6 +12,8 @@ export type PartnerType = 'Cooperative' | 'Aggregator' | 'Distributor' | 'Logist
 
 export interface Partner {
   id: string;
+  /** Depot or consolidation location, used for the map layer (sample). */
+  hub: { lat: number; lng: number };
   name: string;
   nameAr: string;
   type: PartnerType;
@@ -29,6 +31,7 @@ export interface Partner {
 export const PARTNERS: Partner[] = [
   {
     id: 'ptn-eastern-coop',
+    hub: { lat: 24.2105, lng: 55.7512 },
     name: 'Eastern Region Growers Cooperative',
     nameAr: 'تعاونية مزارعي المنطقة الشرقية',
     type: 'Cooperative',
@@ -41,6 +44,7 @@ export const PARTNERS: Partner[] = [
   },
   {
     id: 'ptn-dhafra-coop',
+    hub: { lat: 24.4962, lng: 54.7203 },
     name: 'Al Dhafra Growers Cooperative',
     nameAr: 'تعاونية مزارعي الظفرة',
     type: 'Cooperative',
@@ -53,6 +57,7 @@ export const PARTNERS: Partner[] = [
   },
   {
     id: 'ptn-north-hub',
+    hub: { lat: 25.2831, lng: 55.8794 },
     name: 'Northern Emirates Aggregation Hub',
     nameAr: 'مركز تجميع الإمارات الشمالية',
     type: 'Aggregator',
@@ -65,6 +70,7 @@ export const PARTNERS: Partner[] = [
   },
   {
     id: 'ptn-east-coast',
+    hub: { lat: 25.1288, lng: 56.3265 },
     name: 'East Coast Chilled Transport',
     nameAr: 'النقل المبرد للساحل الشرقي',
     type: 'Logistics provider',
@@ -77,6 +83,7 @@ export const PARTNERS: Partner[] = [
   },
   {
     id: 'ptn-ad-dist',
+    hub: { lat: 24.3422, lng: 54.4874 },
     name: 'Abu Dhabi Produce Distribution',
     nameAr: 'أبوظبي لتوزيع المنتجات الزراعية',
     type: 'Distributor',
@@ -89,6 +96,7 @@ export const PARTNERS: Partner[] = [
   },
   {
     id: 'ptn-dxb-dist',
+    hub: { lat: 25.1341, lng: 55.2391 },
     name: 'Dubai Fresh Distribution',
     nameAr: 'دبي لتوزيع المنتجات الطازجة',
     type: 'Distributor',
@@ -101,6 +109,7 @@ export const PARTNERS: Partner[] = [
   },
   {
     id: 'ptn-marine-cold',
+    hub: { lat: 25.1651, lng: 56.3512 },
     name: 'Marine Cold Chain Services',
     nameAr: 'خدمات السلسلة الباردة للمنتجات البحرية',
     type: 'Logistics provider',
@@ -113,6 +122,7 @@ export const PARTNERS: Partner[] = [
   },
   {
     id: 'ptn-crate-loop',
+    hub: { lat: 24.2488, lng: 55.6531 },
     name: 'Crate Loop Services',
     nameAr: 'خدمات دورة الصناديق',
     type: 'Logistics provider',

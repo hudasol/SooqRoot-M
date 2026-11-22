@@ -19,12 +19,21 @@ import { MapLegend, SupplyMap } from '../components/viz/SupplyMap';
 import { PRODUCTS, getProduct } from '../data/products';
 import { farmPhoto, productPhoto } from '../data/media';
 import { allocatable } from '../lib/engine';
+import { KindFilter, KindFilterBar, KindBadge, MethodTag } from '../components/KindBadge';
+import { PARTNERS } from '../data/partners';
+import { supplyKindOf } from '../data/products';
 import { formatDate, healthLabel } from '../lib/metrics';
 
 export function SupplyTwin() {
   const { farms, buyers, orders } = useStore();
   const [selected, setSelected] = useState<string | null>(null);
   const [productFilter, setProductFilter] = useState<'all' | string>('all');
+  const [kind, setKind] = useState<KindFilter>('all');
+  const [showPartners, setShowPartners] = useState(false);
+  const visibleFarms = useMemo(
+    () => (kind === 'all' ? farms : farms.filter((f) => f.capacity.some((c) => supplyKindOf(c.productId) === kind))),
+    [farms, kind]
+  );
 
   const links = useMemo(
     () =>
@@ -113,11 +122,24 @@ export function SupplyTwin() {
               ))}
             </select>
           </div>
+          <div className="flex flex-wrap items-center gap-3 px-5 pb-3">
+            <KindFilterBar value={kind} onChange={setKind} />
+            <label className="inline-flex cursor-pointer items-center gap-2 text-xs font-semibold text-charcoal-600 dark:text-charcoal-300">
+              <input
+                type="checkbox"
+                checked={showPartners}
+                onChange={(e) => setShowPartners(e.target.checked)}
+                className="h-3.5 w-3.5 accent-brand-600"
+              />
+              Partner layer
+            </label>
+          </div>
           <div className="px-3">
             <SupplyMap
-              farms={farms}
+              farms={visibleFarms}
               buyers={buyers}
               links={links}
+              partners={showPartners ? PARTNERS : undefined}
               height={560}
               selectedFarmId={selected}
               onSelectFarm={setSelected}
@@ -164,6 +186,18 @@ export function SupplyTwin() {
                 </div>
                 <div className="mt-2">
                   <DataRow label="Growing method" value={`${selectedFarm.growingMethod} · ${selectedFarm.hectares} ha`} />
+                  <DataRow label="Region" value={selectedFarm.region} />
+                  <DataRow
+                    label="Supply kinds"
+                    value={
+                      <span className="flex flex-wrap justify-end gap-1">
+                        {Array.from(new Set(selectedFarm.capacity.map((c) => supplyKindOf(c.productId)))).map((k) => (
+                          <KindBadge key={k} kind={k} />
+                        ))}
+                        <MethodTag method={selectedFarm.growingMethod} />
+                      </span>
+                    }
+                  />
                   <DataRow label="Distance to collection" value={`${selectedFarm.distanceKm} km`} />
                   <DataRow label="Fulfilment · quality" value={`${selectedFarm.fulfilmentRate}% · ${selectedFarm.qualityScore}`} />
                 </div>
