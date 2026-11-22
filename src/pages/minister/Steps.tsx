@@ -404,9 +404,11 @@ export function FarmerStep() {
   const farm = FARM_MAP[alloc.farmId];
   const spec = specFor(CANONICAL_REQUEST.productId, 'A')!;
   const deliverEn = new Date(CANONICAL_REQUEST.requiredBy).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
-  const deliver = cardLang === 'en' ? deliverEn : arDate(CANONICAL_REQUEST.requiredBy);
+  const deliverUr = new Date(CANONICAL_REQUEST.requiredBy).toLocaleDateString('ur-PK-u-nu-latn', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+  const deliver = cardLang === 'en' ? deliverEn : cardLang === 'ur' ? deliverUr : arDate(CANONICAL_REQUEST.requiredBy);
 
-  const messageAr = `السلام عليكم، معكم سوق روت. تم تأكيد طلبكم قبل الحصاد: ${num(alloc.qty)} كغ طماطم من الدرجة الأولى، في صناديق 5 كغ قابلة لإعادة الاستخدام، بقطر 60 إلى 70 مم. موعد التسليم ${arDate(CANONICAL_REQUEST.requiredBy)}. تجدون التفاصيل في بطاقة الحصاد المرفقة. شكراً لكم.`;
+  const messageUr = `السلام علیکم، سوق روٹ کی طرف سے اطلاع: کٹائی سے پہلے آپ کا آرڈر کنفرم ہو گیا ہے۔ ${num(alloc.qty)} کلو ٹماٹر، درجہ اول، 5 کلو کے دوبارہ قابل استعمال کریٹس میں، سائز 60 سے 70 ملی میٹر۔ ڈیلیوری کی تاریخ ${deliverUr}۔ تفصیل منسلک ہارویسٹ اور پیکنگ کارڈ میں ہے۔ شکریہ۔`;
+  const messageAr =`السلام عليكم، معكم سوق روت. تم تأكيد طلبكم قبل الحصاد: ${num(alloc.qty)} كغ طماطم من الدرجة الأولى، في صناديق 5 كغ قابلة لإعادة الاستخدام، بقطر 60 إلى 70 مم. موعد التسليم ${arDate(CANONICAL_REQUEST.requiredBy)}. تجدون التفاصيل في بطاقة الحصاد المرفقة. شكراً لكم.`;
   const messageEn = `Your order is confirmed before harvest: ${num(alloc.qty)} kg Class 1 tomatoes in 5 kg reusable crates, 60 to 70 mm caliper. Delivery ${deliverEn}. The attached Harvest and Packing Card has the details.`;
 
   return (
@@ -425,13 +427,19 @@ export function FarmerStep() {
             </div>
           </div>
           <div className="mt-4 flex-1 rounded-2xl bg-[#e9f6ec] p-4">
-            <div className="ar rounded-2xl rounded-se-md bg-[#d6f0dc] p-4 text-[23px] leading-[1.7] text-charcoal-900" dir="rtl" lang="ar">
-              {messageAr}
+            <div
+              className={`rounded-2xl bg-[#d6f0dc] p-4 leading-[1.7] text-charcoal-900 ${
+                cardLang === 'en' ? 'rounded-ee-md text-[21px]' : 'ar rounded-se-md text-[23px]'
+              }`}
+              dir={cardLang === 'en' ? 'ltr' : 'rtl'}
+              lang={cardLang}
+            >
+              {cardLang === 'en' ? messageEn : cardLang === 'ur' ? messageUr : messageAr}
               <div className="mt-2 flex items-center justify-end gap-1 text-sm text-charcoal-500" dir="ltr">
                 06:30 <CheckCheck size={16} className="text-sky-500" />
               </div>
             </div>
-            {!isAr ? (
+            {!isAr && cardLang !== 'en' ? (
               <p className="mt-3 text-base leading-snug text-charcoal-500">
                 <span className="font-semibold">{t('In English', 'بالإنجليزية')}: </span>
                 {messageEn}
