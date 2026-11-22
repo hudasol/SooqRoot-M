@@ -572,3 +572,36 @@ body {
 .recharts-wrapper {
   min-width: 0 !important;
 }
+
+/* ---------- Printing: sticker sheets and Harvest and Packing Cards ---------- */
+@page a5card {
+  size: A5;
+  margin: 8mm;
+}
+@page {
+  size: A4;
+  margin: 10mm;
+}
+@media print {
+  body.sr-print-mode > #root {
+    display: none !important;
+  }
+  body.sr-print-mode .sr-print-root {
+    position: static !important;
+    overflow: visible !important;
+    background: white !important;
+  }
+  .sr-sticker-sheet {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6mm;
+  }
+  .sr-sticker {
+    break-inside: avoid;
+  }
+  .sr-card-print {
+    page: a5card;
+    box-shadow: none !important;
+    break-inside: avoid;
+  }
+}

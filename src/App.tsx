@@ -24,6 +24,7 @@ import { DemoScenario } from './pages/DemoScenario';
 import { Progress } from './pages/Progress';
 import { Pilot } from './pages/Pilot';
 import { Partners } from './pages/Partners';
+import { PassportPublic } from './pages/PassportPublic';
 import { Settings } from './pages/Settings';
 import { Minister } from './pages/minister/Minister';
 import { LangProvider } from './lib/i18n';
@@ -42,6 +43,7 @@ export default function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/minister" element={<Minister />} />
+          <Route path="/passport/:batchId" element={<PassportPublic />} />
           <Route element={<RequireSession />}>
             <Route element={<AppLayout />}>
               <Route path="/dashboard" element={<ControlTower />} />

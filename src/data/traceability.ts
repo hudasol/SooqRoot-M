@@ -197,3 +197,17 @@ export function traceLot(batchId: string): BatchPassport[] {
     (a.deliveredOn ?? '9999').localeCompare(b.deliveredOn ?? '9999')
   );
 }
+
+export const PROVENANCE_AR: Record<string, string> = {
+  'RO desalinated drip': 'ري بالتنقيط بمياه محلّاة بالتناضح العكسي',
+  'Zero pesticide biological': 'خالٍ من المبيدات بمكافحة حيوية',
+  'Harvested under 12 hours ago': 'حُصد قبل أقل من 12 ساعة',
+  'Cold chain verified': 'سلسلة باردة موثّقة',
+};
+
+export const CUSTODY_ROLE_AR: Record<string, string> = {
+  Farm: 'المزرعة',
+  'Collection partner': 'شريك الجمع',
+  Distributor: 'الموزّع',
+  Buyer: 'المشتري',
+};
