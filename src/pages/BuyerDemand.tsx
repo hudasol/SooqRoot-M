@@ -29,6 +29,7 @@ import { Avatar } from '../components/ui/Photo';
 import { DEMAND_PRESETS } from '../data/demand';
 import { formatAed, formatDate } from '../lib/metrics';
 import { translateDemand, TranslationResult, TRANSLATOR_SAMPLES } from '../lib/translator';
+import { HarvestCardPreview, PackagingCheckPanel } from '../components/TranslatorExtras';
 import { Demand, DemandLine, Grade, Unit } from '../types';
 
 const PACKAGING_OPTIONS = [
@@ -595,6 +596,7 @@ function AiTranslator({
               </button>
             ))}
           </div>
+          <PackagingCheckPanel text={text} />
           <Button
             className="mt-3 w-full"
             icon={<Sparkles size={15} />}
@@ -680,6 +682,12 @@ function AiTranslator({
                     </li>
                   ))}
                 </ul>
+              ) : null}
+
+              {result.productId && result.qty ? (
+                <div className="mt-4 border-t border-charcoal-100 pt-4 dark:border-charcoal-800">
+                  <HarvestCardPreview productId={result.productId} qtyKg={result.qty} requiredBy={result.requiredBy} />
+                </div>
               ) : null}
 
               <div className="mt-4 flex gap-2">

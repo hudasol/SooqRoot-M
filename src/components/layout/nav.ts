@@ -1,5 +1,6 @@
 import {
   Activity,
+  BookOpen,
   ScanLine,
   Award,
   BarChart3,
@@ -55,6 +56,7 @@ export const NAV: NavGroup[] = [
       { to: '/network', label: 'Supply Digital Twin', icon: Network },
       { to: '/harvest', label: 'Harvest Calendar', icon: CalendarDays },
       { to: '/partners', label: 'Partner Network', icon: Handshake },
+      { to: '/guides', label: 'Harvest and Packing Guides', icon: BookOpen },
     ],
   },
   {

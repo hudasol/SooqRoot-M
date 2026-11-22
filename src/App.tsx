@@ -25,6 +25,7 @@ import { Progress } from './pages/Progress';
 import { Pilot } from './pages/Pilot';
 import { Partners } from './pages/Partners';
 import { PassportPublic } from './pages/PassportPublic';
+import { Guides } from './pages/Guides';
 import { Settings } from './pages/Settings';
 import { Minister } from './pages/minister/Minister';
 import { LangProvider } from './lib/i18n';
@@ -69,6 +70,7 @@ export default function App() {
               <Route path="/recognition" element={<Navigate to="/progress" replace />} />
               <Route path="/pilot" element={<Pilot />} />
               <Route path="/partners" element={<Partners />} />
+              <Route path="/guides" element={<Guides />} />
               <Route path="/settings" element={<Settings />} />
             </Route>
           </Route>
