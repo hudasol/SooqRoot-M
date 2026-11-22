@@ -1,3 +1,4 @@
+import { formatCo2 } from '../lib/emissions';
 import React from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import {
@@ -29,7 +30,8 @@ import { buyerPhoto, farmPhoto, productPhoto } from '../data/media';
 import { Avatar, Photo } from '../components/ui/Photo';
 import { getBuyer } from '../data/buyers';
 import { getFarm } from '../data/farms';
-import { BATCH_PASSPORTS, FULFILMENT_JOBS } from '../data/operations';
+import { FULFILMENT_JOBS } from '../data/operations';
+import { BATCH_PASSPORTS } from '../data/traceability';
 import { formatAed, formatDate, healthLabel } from '../lib/metrics';
 import { ORDER_FLOW } from '../types';
 
@@ -374,7 +376,7 @@ export function OrderDetail() {
                         <span>·</span>
                         <span>{p.distanceKm} km</span>
                         <span>·</span>
-                        <span className="text-brand-600">{p.co2SavedKg} kg CO₂e saved</span>
+                        <span className="text-brand-600">{formatCo2(p.co2SavedKg)}</span>
                       </div>
                     </Link>
                   );

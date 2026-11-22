@@ -1,5 +1,6 @@
 import { Farm, Order, ProcurementCycle } from '../types';
-import { runCommitmentEngine } from '../lib/engine';
+import { checkPackaging, emirateFromLocation, runCommitmentEngine } from '../lib/engine';
+import { crateCountFor, packKgFor } from '../lib/packaging';
 import { FARMS } from './farms';
 import { getProduct } from './products';
 
@@ -313,6 +314,9 @@ function buildOrder(seed: OrderSeed): Order {
           requiredBy: seed.requiredBy,
           packaging: seed.packaging,
           orderRef: seed.ref,
+          placedOn: seed.createdAt,
+          deliveryEmirate: emirateFromLocation(seed.deliveryLocation),
+          buyerLocation: seed.deliveryLocation,
         },
         LEDGER
       );
@@ -340,6 +344,8 @@ function buildOrder(seed: OrderSeed): Order {
     if (a.role === 'primary') consume(a.farmId, seed.productId, a.qty, a.harvestDate);
   }
 
+  const packCheck = checkPackaging(seed.packaging, [{ packaging: seed.packaging }]);
+
   return {
     id: `order-${seed.ref.toLowerCase()}`,
     ref: seed.ref,
@@ -360,6 +366,11 @@ function buildOrder(seed: OrderSeed): Order {
     allocations,
     health: seed.health,
     deliveryLocation: seed.deliveryLocation,
+    packagingType: seed.packaging,
+    reusable: /crate|tote|box|carton/i.test(seed.packaging),
+    crateCount: crateCountFor(seed.qty, packKgFor(seed.packaging, product.unit)),
+    packagingStatus: packCheck.status,
+    flagReason: packCheck.flags[0]?.reason,
   };
 }
 

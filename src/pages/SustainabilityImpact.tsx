@@ -1,3 +1,4 @@
+import { formatCo2 } from '../lib/emissions';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -25,7 +26,7 @@ import { Badge, Card, CardHeader, PageHeader, Progress } from '../components/ui'
 import { ChartTooltip } from '../components/viz/ChartTooltip';
 import { IMPACT, MONTHLY } from '../data/analytics';
 import { useChartColors } from '../lib/theme';
-import { BATCH_PASSPORTS } from '../data/operations';
+import { BATCH_PASSPORTS } from '../data/traceability';
 import { formatAed } from '../lib/metrics';
 
 export function SustainabilityImpact() {
@@ -176,7 +177,7 @@ export function SustainabilityImpact() {
                       {p.batchId}
                     </div>
                     <div className="text-2xs text-charcoal-400">
-                      {p.distanceKm} km · {p.co2SavedKg} kg CO₂e avoided
+                      {p.distanceKm} km (estimate) · {formatCo2(p.co2SavedKg)}
                     </div>
                   </div>
                 </div>

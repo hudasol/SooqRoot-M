@@ -1,3 +1,4 @@
+import { formatCo2 } from '../lib/emissions';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -18,7 +19,7 @@ import { farmPhoto, productPhoto } from '../data/media';
 import { Avatar, Photo } from '../components/ui/Photo';
 import { getFarm } from '../data/farms';
 import { getBuyer } from '../data/buyers';
-import { BATCH_PASSPORTS } from '../data/operations';
+import { BATCH_PASSPORTS } from '../data/traceability';
 import { formatDate } from '../lib/metrics';
 import { BatchPassport } from '../types';
 
@@ -26,7 +27,7 @@ export function BatchPassports() {
   const { orders } = useStore();
   const [open, setOpen] = useState<BatchPassport | null>(null);
 
-  const totalCo2 = BATCH_PASSPORTS.reduce((s, p) => s + p.co2SavedKg, 0);
+  const totalCo2 = BATCH_PASSPORTS.reduce((s, p) => s + (p.co2SavedKg ?? 0), 0);
   const avgDistance =
     BATCH_PASSPORTS.reduce((s, p) => s + p.distanceKm, 0) / Math.max(1, BATCH_PASSPORTS.length);
 
@@ -110,7 +111,7 @@ export function BatchPassports() {
                     CO₂e avoided
                   </span>
                   <span className="text-xs font-bold text-brand-700 dark:text-brand-200">
-                    {p.co2SavedKg} kg
+                    {formatCo2(p.co2SavedKg)}
                   </span>
                 </div>
 
@@ -230,7 +231,7 @@ function PassportModal({
             <ImpactTile
               icon={<Leaf size={14} />}
               label="CO₂e avoided"
-              value={`${passport.co2SavedKg} kg`}
+              value={formatCo2(passport.co2SavedKg)}
             />
           </div>
 

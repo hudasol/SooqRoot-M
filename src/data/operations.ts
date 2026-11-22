@@ -194,7 +194,12 @@ export const FULFILMENT_JOBS: FulfilmentJob[] = [
 
 /* ---------------- Batch passports ---------------- */
 
-export const BATCH_PASSPORTS: BatchPassport[] = [
+export type BasePassport = Omit<
+  BatchPassport,
+  'farmRegistrationNo' | 'region' | 'lotId' | 'harvestedAt' | 'lotKg' | 'provenanceTags' | 'buyerPoRef' | 'custodyChain' | 'coldChainLog'
+>;
+
+export const BASE_PASSPORTS: BasePassport[] = [
   {
     id: 'bp-001',
     batchId: 'SR-2609-OG-021-01',
