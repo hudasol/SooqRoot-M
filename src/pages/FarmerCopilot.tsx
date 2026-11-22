@@ -31,6 +31,8 @@ import {
 } from '../data/operations';
 import { formatDate, formatTime, relativeTime } from '../lib/metrics';
 import { CopilotMessage } from '../types';
+import { ReportShortfallButton } from '../components/ShortfallPanel';
+import { HarvestCardPreview } from '../components/TranslatorExtras';
 
 export function FarmerCopilot() {
   const { orders } = useStore();
@@ -304,6 +306,20 @@ export function FarmerCopilot() {
                 <Field label="Harvest by" value={formatDate(farmCommitment.allocation.harvestDate, 'long')} />
                 <Field label="Packaging" value={farmCommitment.order.packaging} />
               </div>
+              <div className="mt-3 flex flex-wrap items-center gap-2">
+                <ReportShortfallButton order={farmCommitment.order} farmId={thread.farmId} />
+              </div>
+              {farmCommitment.order.unit === 'kg' ? (
+                <div className="mt-4 border-t border-charcoal-100 pt-4 dark:border-charcoal-800">
+                  <HarvestCardPreview
+                    productId={farmCommitment.order.productId}
+                    qtyKg={farmCommitment.allocation.qty}
+                    requiredBy={farmCommitment.order.requiredBy}
+                    initialLang={farm?.foremanLanguage === 'en' ? 'en' : farm?.foremanLanguage === 'ur' ? 'ur' : 'ar'}
+                    farmCode={farm?.code}
+                  />
+                </div>
+              ) : null}
             </Card>
           ) : null}
         </div>

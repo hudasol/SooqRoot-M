@@ -10,6 +10,7 @@ import { useReadableColor } from '../lib/theme';
 import { farmName } from '../data/farms';
 import { HARVEST_EVENTS } from '../data/operations';
 import { formatDate } from '../lib/metrics';
+import { SummerGapView } from '../components/SummerGap';
 
 const WEEKDAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
@@ -72,6 +73,8 @@ export function HarvestCalendar() {
                 { value: 'list', label: 'List' },
               ]}
             />
+
+      <SummerGapView />
           </>
         }
       />
