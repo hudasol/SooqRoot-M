@@ -47,22 +47,14 @@ function Logo({ collapsed, dark }: { collapsed?: boolean; dark?: boolean }) {
   );
 }
 
-export function DemoDataBadge({
-  className = '',
-  compact,
-}: {
-  className?: string;
-  compact?: boolean;
-}) {
+export function SampleNetworkChip({ className = '' }: { className?: string }) {
   return (
     <span
-      className={`inline-flex items-center gap-1.5 rounded-full border border-sand-200 bg-sand-50 font-semibold text-sand-600 dark:border-sand-600 dark:bg-sand-600/20 dark:text-sand-200 ${
-        compact ? 'px-2 py-1 text-[10px]' : 'px-2.5 py-1 text-2xs'
-      } ${className}`}
-      title="All figures in this environment are illustrative demo data, not live commercial data."
+      className={`inline-flex items-center gap-1.5 rounded-full border border-sand-200 bg-sand-50 px-2.5 py-1 text-2xs font-semibold text-sand-600 dark:border-sand-600 dark:bg-sand-600/20 dark:text-sand-200 ${className}`}
+      title="Figures shown use a sample supply network."
     >
       <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-sand-400" />
-      {compact ? 'Demo' : 'Demo Data'}
+      Sample network
     </span>
   );
 }
@@ -187,16 +179,6 @@ export function AppLayout() {
 
         {navBody}
 
-        {!sidebarCollapsed ? (
-          <div className="border-t border-charcoal-100 p-3 dark:border-charcoal-800">
-            <div className="rounded-xl bg-canvas-soft p-3 dark:bg-charcoal-950">
-              <DemoDataBadge />
-              <p className="mt-2 text-2xs leading-relaxed text-charcoal-400">
-                Illustrative dataset for demonstration. No live commercial data.
-              </p>
-            </div>
-          </div>
-        ) : null}
       </aside>
 
       {/* ---------- Mobile drawer ---------- */}
@@ -218,9 +200,6 @@ export function AppLayout() {
               </button>
             </div>
             {navBody}
-            <div className="border-t border-charcoal-100 p-3 dark:border-charcoal-800">
-              <DemoDataBadge />
-            </div>
           </aside>
         </div>
       ) : null}
@@ -260,8 +239,7 @@ export function AppLayout() {
             </kbd>
           </button>
 
-          <DemoDataBadge className="hidden sm:inline-flex" />
-          <DemoDataBadge compact className="sm:hidden" />
+          <SampleNetworkChip className="hidden sm:inline-flex" />
 
           <button
             onClick={toggleTheme}
@@ -273,7 +251,7 @@ export function AppLayout() {
 
           <div className="flex items-center gap-2.5 border-s border-charcoal-100 ps-2 dark:border-charcoal-800 sm:ps-3">
             <span className="hidden h-8 w-8 items-center justify-center rounded-full bg-brand-gradient text-2xs font-bold text-white sm:inline-flex">
-              AA
+              HM
             </span>
             <div className="hidden leading-tight lg:block">
               <div className="text-xs font-semibold text-charcoal-800 dark:text-charcoal-100">
@@ -308,7 +286,6 @@ export function AppLayout() {
               Confirmed Before Harvest.
             </span>
             <span className="flex items-center gap-3">
-              <Badge tone="neutral">Demo build</Badge>
               <span>© 2026 SooqRoot</span>
             </span>
           </div>
