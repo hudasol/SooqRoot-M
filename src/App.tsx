@@ -23,6 +23,8 @@ import { FarmerCopilot } from './pages/FarmerCopilot';
 import { DemoScenario } from './pages/DemoScenario';
 import { Recognition } from './pages/Recognition';
 import { Settings } from './pages/Settings';
+import { Minister } from './pages/minister/Minister';
+import { LangProvider } from './lib/i18n';
 
 function RequireSession() {
   const { session } = useStore();
@@ -32,10 +34,12 @@ function RequireSession() {
 
 export default function App() {
   return (
+    <LangProvider>
     <AppProvider>
       <HashRouter>
         <Routes>
           <Route path="/login" element={<Login />} />
+          <Route path="/minister" element={<Minister />} />
           <Route element={<RequireSession />}>
             <Route element={<AppLayout />}>
               <Route path="/dashboard" element={<ControlTower />} />
@@ -65,5 +69,6 @@ export default function App() {
         </Routes>
       </HashRouter>
     </AppProvider>
+    </LangProvider>
   );
 }
