@@ -192,7 +192,7 @@ export function Login() {
                     setUsername(e.target.value);
                     setError(null);
                   }}
-                  placeholder="Awaiz"
+                  placeholder="Huda"
                   className={`sr-input ps-10 ${error ? 'border-rose-300 focus:ring-rose-300' : 'focus:ring-brand-300'}`}
                   aria-invalid={Boolean(error)}
                 />
@@ -252,10 +252,10 @@ export function Login() {
             <div className="flex items-center justify-between gap-3">
               <div>
                 <div className="text-2xs font-bold uppercase tracking-widest text-sand-600 dark:text-sand-200">
-                  Demo access
+                  Guest access
                 </div>
                 <p className="mt-1 text-xs text-charcoal-600 dark:text-charcoal-300">
-                  Username <span className="font-mono font-semibold">Awaiz</span> · Password{' '}
+                  Username <span className="font-mono font-semibold">Huda</span> · Password{' '}
                   <span className="font-mono font-semibold">123</span>
                 </p>
               </div>

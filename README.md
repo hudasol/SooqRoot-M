@@ -26,7 +26,7 @@ Sign-in is a demo gate, not a secure authentication service.
 
 | | |
 |---|---|
-| Username | `Awaiz` |
+| Username | `Huda` |
 | Password | `123` |
 
 The session lives in `sessionStorage` (closing the tab signs you out). Interface state and

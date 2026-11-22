@@ -25,11 +25,11 @@ import { computeMetrics, NetworkMetrics } from '../lib/metrics';
    the tab signs you out.
    ============================================================ */
 
-export const DEMO_CREDENTIALS = { username: 'Awaiz', password: '123' };
+export const DEMO_CREDENTIALS = { username: 'Huda', password: '123' };
 
 export const DEMO_PROFILE: Omit<DemoSession, 'loggedInAt'> = {
-  username: 'Awaiz',
-  displayName: 'Awaiz Ahmed',
+  username: 'Huda',
+  displayName: 'Huda Mueen',
   role: 'Administrator / Product Demo',
 };
 
