@@ -25,6 +25,7 @@ import { getBuyer } from '../data/buyers';
 import { buyerPhoto } from '../data/media';
 import { formatAed } from '../lib/metrics';
 import { useChartColors } from '../lib/theme';
+import { FoodLossAvoidedCard, NationalTargetsPanel } from '../components/NationalCards';
 
 export function LocalProcurementIndex() {
   const { metrics } = useStore();
@@ -47,13 +48,16 @@ export function LocalProcurementIndex() {
       <PageHeader
         eyebrow="Intelligence"
         title="Local Procurement Index"
-        subtitle="The single number that tells a commercial buyer how much of their food spend genuinely comes from UAE farms: measured, not estimated."
+        subtitle="The share of a buyer's food spend that comes from UAE farms, shown against the 25% national target."
         actions={
           <Badge tone="brand" icon={<Activity size={12} />}>
             Trailing 12 months
           </Badge>
         }
       />
+
+      <NationalTargetsPanel />
+      <FoodLossAvoidedCard />
 
       {/* ---------------- Headline ---------------- */}
       <section className="grid gap-4 lg:grid-cols-[minmax(0,380px)_1fr]">

@@ -1,3 +1,4 @@
+import { FoodLossAvoidedCard } from '../components/NationalCards';
 import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -213,6 +214,8 @@ export function ControlTower() {
           to="/exceptions"
         />
       </section>
+
+      <FoodLossAvoidedCard />
 
       {/* ---------------- Target + upcoming demand ---------------- */}
       <Reveal as="section" className="grid gap-4 xl:grid-cols-[minmax(0,340px)_1fr]">

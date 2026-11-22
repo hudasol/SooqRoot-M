@@ -1,4 +1,7 @@
 import { formatCo2 } from '../lib/emissions';
+import { EconomicsCard, FoodMilesCard, PackagingCard } from '../components/OrderCards';
+import { KindBadge, MethodTag } from '../components/KindBadge';
+import { supplyKindOf } from '../data/products';
 import React from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import {
@@ -190,7 +193,7 @@ export function OrderDetail() {
             </div>
 
             <div className="mt-3">
-              <DataRow label="Order value" value={formatAed(order.valueAed)} />
+              <DataRow label="Order value" value={`${formatAed(order.valueAed)} (estimate)`} />
               <DataRow label="Confidence" value={`${order.confidence}%`} />
               <DataRow label="Required by" value={formatDate(order.requiredBy, 'long')} />
               <DataRow label="Created" value={formatDate(order.createdAt, 'long')} />
@@ -227,6 +230,10 @@ export function OrderDetail() {
               </div>
             </Card>
           ) : null}
+
+          <PackagingCard order={order} />
+          {order.allocations.length > 0 ? <EconomicsCard order={order} /> : null}
+          {order.allocations.length > 0 ? <FoodMilesCard order={order} /> : null}
         </div>
 
         {/* ---------------- Allocations ---------------- */}
@@ -275,6 +282,8 @@ export function OrderDetail() {
                         >
                           {farm.name}
                         </Link>
+                        <KindBadge kind={supplyKindOf(order.productId)} />
+                        <MethodTag method={farm.growingMethod} />
                         <Badge tone={a.role === 'primary' ? 'brand' : 'sand'}>{a.role}</Badge>
                         <span className="sr-num text-base">
                           {a.qty.toLocaleString()}
@@ -303,6 +312,17 @@ export function OrderDetail() {
                         <span>·</span>
                         <span>Confidence {a.confidence}%</span>
                       </div>
+                      {a.partnerChain ? (
+                        <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-2xs text-charcoal-500 dark:text-charcoal-400">
+                          <Truck size={11} />
+                          <span>Collected by <span className="font-semibold text-charcoal-700 dark:text-charcoal-200">{a.partnerChain.collection}</span></span>
+                          <span>Consolidated by <span className="font-semibold text-charcoal-700 dark:text-charcoal-200">{a.partnerChain.consolidation}</span></span>
+                          <span>Delivered by <span className="font-semibold text-charcoal-700 dark:text-charcoal-200">{a.partnerChain.delivery}</span></span>
+                          {a.partnerChain.coldChain ? (
+                            <span>Cold chain <span className="font-semibold text-sky-700 dark:text-sky-200">{a.partnerChain.coldChain}</span></span>
+                          ) : null}
+                        </div>
+                      ) : null}
                       <ul className="mt-2 space-y-0.5 border-t border-charcoal-50 pt-2 dark:border-charcoal-800">
                         {a.rationale.map((r, i) => (
                           <li key={i} className="text-2xs leading-relaxed text-charcoal-500 dark:text-charcoal-400">

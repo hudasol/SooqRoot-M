@@ -4,7 +4,6 @@ import {
   ClipboardList,
   Cpu,
   Gauge,
-  Info,
   Leaf,
   MessageSquare,
   PlayCircle,
@@ -86,19 +85,16 @@ const STORY = [
 ];
 
 export function DemoScenario() {
-  const { metrics, farms, orders, resetDemoData } = useStore();
+  const { metrics, farms, orders } = useStore();
 
   return (
     <div className="space-y-6">
       <PageHeader
         eyebrow="System"
-        title="Demo Scenario"
-        subtitle="An eight-step run through the product, in the order that tells the strongest story. Every screen is live. Nothing here is a slide."
+        title="Guided Walkthrough"
+        subtitle="An eight-step run through the product, in the order that tells the strongest story. Every screen is live."
         actions={
           <>
-            <Badge tone="sand" icon={<Info size={12} />}>
-              Illustrative demo data
-            </Badge>
             <Link to="/dashboard" className="sr-btn-primary">
               <PlayCircle size={15} /> Start the run
             </Link>
@@ -196,27 +192,6 @@ export function DemoScenario() {
           );
         })}
       </div>
-
-      {/* ---------------- Reset ---------------- */}
-      <Card className="border-sand-200 bg-sand-50 dark:border-sand-600 dark:bg-sand-600/10">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <h3 className="sr-h3">Reset before the next run</h3>
-            <p className="sr-sub mt-1 text-xs">
-              Clears anything created during a demo, new demand records, issued commitments, resolved
-              exceptions, and restores the dataset to its opening state.
-            </p>
-          </div>
-          <button
-            onClick={() => {
-              if (window.confirm('Reset all demo data to its opening state?')) resetDemoData();
-            }}
-            className="sr-btn-secondary shrink-0 text-xs"
-          >
-            Reset demo data
-          </button>
-        </div>
-      </Card>
     </div>
   );
 }
