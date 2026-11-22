@@ -91,7 +91,7 @@ export function OrderDetail() {
                     kind: 'commitment',
                     title: `${order.ref} advanced from ${order.status}`,
                     detail: `${product.name} · ${buyer?.name}`,
-                    actor: 'Awaiz Ahmed',
+                    actor: 'Huda Mueen',
                   });
                 }}
               >

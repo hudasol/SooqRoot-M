@@ -58,7 +58,7 @@ export function Exceptions() {
       kind: 'exception',
       title: `${e.ref} moved to ${status}`,
       detail: e.title,
-      actor: 'Awaiz Ahmed',
+      actor: 'Huda Mueen',
     });
   };
 

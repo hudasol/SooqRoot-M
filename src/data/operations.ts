@@ -21,7 +21,7 @@ export const EXCEPTIONS: ExceptionItem[] = [
       'FreshMart Retail order SR-2603 requires 2,000 kg of leafy greens by 16 Oct. Only 800 kg is committed. Emirates Leaf Farm has 480 kg already committed elsewhere and Al Khazna is at its concentration limit.',
     orderId: 'order-sr-2603',
     raisedAt: '2026-09-13T08:20:00',
-    owner: 'Awaiz Ahmed',
+    owner: 'Huda Mueen',
     status: 'open',
     recommendedAction:
       'Open a supplementary commitment round with Remah Organic Fields and Desert Bloom, or offer FreshMart a 400 kg substitution into mixed herbs.',
@@ -38,7 +38,7 @@ export const EXCEPTIONS: ExceptionItem[] = [
     orderId: 'order-sr-2602',
     farmId: 'farm-sweihan-valley',
     raisedAt: '2026-09-12T14:05:00',
-    owner: 'Awaiz Ahmed',
+    owner: 'Huda Mueen',
     status: 'mitigating',
     recommendedAction:
       'Confirm repair ETA with Sweihan Valley, then re-run the commitment engine to redistribute 1,400 kg across Oasis Greens and Falaj Produce.',

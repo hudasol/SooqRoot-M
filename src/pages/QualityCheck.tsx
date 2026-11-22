@@ -193,7 +193,7 @@ export function QualityCheck() {
       kind: 'exception',
       title: `Quality check logged, Grade ${result.grade} on ${product.name}`,
       detail: `${batchRef} · score ${result.score}/100 · ${farm?.name ?? 'farm'} · simulated grading`,
-      actor: 'Awaiz Ahmed',
+      actor: 'Huda Mueen',
     });
     setLogged(true);
   };
