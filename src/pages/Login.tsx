@@ -268,8 +268,7 @@ export function Login() {
               </button>
             </div>
             <p className="mt-3 border-t border-sand-200 pt-2.5 text-[11px] leading-relaxed text-charcoal-500 dark:border-sand-600/50 dark:text-charcoal-400">
-              This is a demonstration sign-in, not a secure authentication service. The session is
-              held in this browser tab only and every figure in the product is illustrative demo data.
+              Figures shown use a sample supply network.
             </p>
           </div>
         </div>
