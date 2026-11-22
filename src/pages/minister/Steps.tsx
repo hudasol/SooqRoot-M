@@ -403,13 +403,14 @@ export function FarmerStep() {
   const alloc = RESULT.primary[0];
   const farm = FARM_MAP[alloc.farmId];
   const spec = specFor(CANONICAL_REQUEST.productId, 'A')!;
-  const deliverEn = new Date(CANONICAL_REQUEST.requiredBy).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
-  const deliverUr = new Date(CANONICAL_REQUEST.requiredBy).toLocaleDateString('ur-PK-u-nu-latn', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
-  const deliver = cardLang === 'en' ? deliverEn : cardLang === 'ur' ? deliverUr : arDate(CANONICAL_REQUEST.requiredBy);
+  const DELIVERY_ISO = '2026-11-23';
+  const deliverEn = new Date(DELIVERY_ISO).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+  const deliverUr = new Date(DELIVERY_ISO).toLocaleDateString('ur-PK-u-nu-latn', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+  const deliver = cardLang === 'en' ? deliverEn : cardLang === 'ur' ? deliverUr : arDate(DELIVERY_ISO);
 
-  const messageUr = `السلام علیکم، سوق روٹ کی طرف سے اطلاع: کٹائی سے پہلے آپ کا آرڈر کنفرم ہو گیا ہے۔ ${num(alloc.qty)} کلو ٹماٹر، درجہ اول، 5 کلو کے دوبارہ قابل استعمال کریٹس میں، سائز 60 سے 70 ملی میٹر۔ ڈیلیوری کی تاریخ ${deliverUr}۔ تفصیل منسلک ہارویسٹ اور پیکنگ کارڈ میں ہے۔ شکریہ۔`;
-  const messageAr =`السلام عليكم، معكم سوق روت. تم تأكيد طلبكم قبل الحصاد: ${num(alloc.qty)} كغ طماطم من الدرجة الأولى، في صناديق 5 كغ قابلة لإعادة الاستخدام، بقطر 60 إلى 70 مم. موعد التسليم ${arDate(CANONICAL_REQUEST.requiredBy)}. تجدون التفاصيل في بطاقة الحصاد المرفقة. شكراً لكم.`;
-  const messageEn = `Your order is confirmed before harvest: ${num(alloc.qty)} kg Class 1 tomatoes in 5 kg reusable crates, 60 to 70 mm caliper. Delivery ${deliverEn}. The attached Harvest and Packing Card has the details.`;
+  const messageUr = `السلام علیکم، سوق روٹ کی طرف سے اطلاع: کٹائی سے پہلے آپ کا آرڈر کنفرم ہو گیا ہے۔ ${num(alloc.qty)} کلو ٹماٹر، درجہ اول، 5 کلو کے دوبارہ قابل استعمال کریٹس میں، مناسب پختگی کے ساتھ۔ ڈیلیوری کی تاریخ ${deliverUr}۔ تفصیل منسلک ہارویسٹ اور پیکنگ کارڈ میں ہے۔ شکریہ۔`;
+  const messageAr =`السلام عليكم، معكم سوق روت. تم تأكيد طلبكم قبل الحصاد: ${num(alloc.qty)} كغ طماطم من الدرجة الأولى، في صناديق 5 كغ قابلة لإعادة الاستخدام، بدرجة نضج مناسبة. موعد التسليم ${arDate(DELIVERY_ISO)}. تجدون التفاصيل في بطاقة الحصاد المرفقة. شكراً لكم.`;
+  const messageEn = `Your order is confirmed before harvest: ${num(alloc.qty)} kg Class 1 tomatoes in 5 kg reusable crates, at the right ripeness. Delivery ${deliverEn}. The attached Harvest and Packing Card has the details.`;
 
   return (
     <StepFrame index={3}>
