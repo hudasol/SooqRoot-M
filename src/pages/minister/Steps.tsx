@@ -94,11 +94,12 @@ function Chip({
   );
 }
 
-function PolicyNote({ keys, className = '' }: { keys: PolicyKey[]; className?: string }) {
+function PolicyNote({ keys, className = '', capitalise = false }: { keys: PolicyKey[]; className?: string; capitalise?: boolean }) {
   const { lang } = useLang();
+  const text = keys.map((k) => POLICY_SHORT[k][lang]).join(' · ');
   return (
-    <p className={`text-sm leading-snug text-charcoal-500 ${className}`}>
-      {keys.map((k) => POLICY_SHORT[k][lang]).join(' · ')}
+    <p className={`text-[16px] leading-snug text-charcoal-500 ${className}`}>
+      {capitalise ? text.replace('initiative', 'Initiative') : text}
     </p>
   );
 }
@@ -494,7 +495,7 @@ export function ImpactStep() {
 
   return (
     <StepFrame index={4}>
-      <div className="grid h-full grid-cols-[1.05fr_1fr] gap-5">
+      <div className="grid h-full grid-cols-[0.85fr_1fr] gap-5">
         {/* Local share */}
         <section className="flex min-h-0 flex-col rounded-3xl border border-charcoal-200 bg-white p-5 shadow-soft">
           <div className="flex items-start justify-between gap-3">
@@ -547,11 +548,11 @@ export function ImpactStep() {
               );
             })}
           </div>
-          <PolicyNote keys={['SUSTAINABLE_PRODUCT']} className="mt-2" />
+          <PolicyNote keys={['SUSTAINABLE_PRODUCT']} className="mt-2 !text-[21px] font-semibold" capitalise />
         </section>
 
         {/* Right column tiles */}
-        <div className="grid min-h-0 grid-rows-3 gap-4">
+        <div className="grid min-h-0 grid-rows-[1fr_1.3fr_1fr] gap-3">
           <Tile
             icon={<Sprout size={26} />}
             label={t('Committed before harvest', 'ملتزم به قبل الحصاد')}
@@ -570,7 +571,7 @@ export function ImpactStep() {
             policy={
               <div>
                 <PolicyNote keys={['NET_ZERO', 'GREEN_AGENDA']} />
-                <p className="text-xs leading-snug text-charcoal-400">
+                <p className="text-[14px] leading-snug text-charcoal-400">
                   {SOURCES.defra.label}; {SOURCES.glec.label}
                 </p>
               </div>
@@ -606,7 +607,7 @@ function Tile({
   policy: React.ReactNode;
 }) {
   return (
-    <section className="flex min-h-0 flex-col justify-between rounded-3xl border border-charcoal-200 bg-white p-4 shadow-soft">
+    <section className="flex min-h-0 flex-col justify-between rounded-3xl border border-charcoal-200 bg-white px-4 py-3 shadow-soft">
       <div className="flex items-start gap-3">
         <span className="mt-0.5 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-700">
           {icon}
@@ -619,7 +620,7 @@ function Tile({
         </div>
       </div>
       <div>
-        <div className="text-[17px] font-medium leading-snug text-charcoal-700">{sub}</div>
+        <div className="text-[20px] font-medium leading-snug text-charcoal-700">{sub}</div>
         {policy}
       </div>
     </section>
