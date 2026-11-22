@@ -1,14 +1,15 @@
 import { Farm } from '../types';
+import { CORE_EXTRAS, FarmExtras, NEW_FARMS } from './farmsExtra';
 
 /**
- * DEMO FARM NETWORK - fictional farms modelled on the Al Ain / Al Khazna /
+ * SAMPLE FARM NETWORK - fictional farms modelled on the Al Ain / Al Khazna /
  * Sweihan / Liwa growing belt. Coordinates (x, y) are normalised 0-100
  * positions on the schematic network canvas, roughly mirroring real geography
  * (Abu Dhabi coast on the left, Al Ain inland to the right).
  *
  * Quantities are expressed for the active October 2026 procurement window.
  */
-export const FARMS: Farm[] = [
+const CORE_FARMS: Omit<Farm, keyof FarmExtras>[] = [
   {
     id: 'farm-alain-018',
     code: 'AA-018',
@@ -26,7 +27,7 @@ export const FARMS: Farm[] = [
     growingMethod: 'Net house',
     certifications: ['ADAFSA GAP', 'Emirates Quality Mark'],
     preferredLanguage: 'Arabic',
-    contactName: 'Saeed Al Mazrouei',
+    contactName: 'Farm manager',
     fulfilmentRate: 94,
     qualityScore: 91,
     reliability: 92,
@@ -74,7 +75,7 @@ export const FARMS: Farm[] = [
     growingMethod: 'Hydroponic',
     certifications: ['ADAFSA GAP', 'GlobalG.A.P.', 'Water Efficiency Tier 1'],
     preferredLanguage: 'English',
-    contactName: 'Hessa Al Dhaheri',
+    contactName: 'Farm manager',
     fulfilmentRate: 97,
     qualityScore: 96,
     reliability: 97,
@@ -155,7 +156,7 @@ export const FARMS: Farm[] = [
     growingMethod: 'Greenhouse',
     certifications: ['ADAFSA GAP'],
     preferredLanguage: 'Arabic',
-    contactName: 'Mariam Al Kaabi',
+    contactName: 'Farm manager',
     fulfilmentRate: 93,
     qualityScore: 90,
     reliability: 91,
@@ -225,7 +226,7 @@ export const FARMS: Farm[] = [
     growingMethod: 'Greenhouse',
     certifications: ['ADAFSA GAP', 'Emirates Quality Mark'],
     preferredLanguage: 'Urdu',
-    contactName: 'Imran Qureshi',
+    contactName: 'Farm manager',
     fulfilmentRate: 90,
     qualityScore: 88,
     reliability: 89,
@@ -295,7 +296,7 @@ export const FARMS: Farm[] = [
     growingMethod: 'Open field',
     certifications: ['ADAFSA GAP'],
     preferredLanguage: 'Arabic',
-    contactName: 'Khalfan Al Ameri',
+    contactName: 'Farm manager',
     fulfilmentRate: 89,
     qualityScore: 86,
     reliability: 88,
@@ -354,7 +355,7 @@ export const FARMS: Farm[] = [
     growingMethod: 'Greenhouse',
     certifications: ['ADAFSA GAP', 'Organic (in conversion)'],
     preferredLanguage: 'English',
-    contactName: 'Noura Al Suwaidi',
+    contactName: 'Farm manager',
     fulfilmentRate: 91,
     qualityScore: 89,
     reliability: 90,
@@ -413,7 +414,7 @@ export const FARMS: Farm[] = [
     growingMethod: 'Hydroponic',
     certifications: ['ADAFSA GAP', 'GlobalG.A.P.'],
     preferredLanguage: 'English',
-    contactName: 'Yousef Al Blooshi',
+    contactName: 'Farm manager',
     fulfilmentRate: 95,
     qualityScore: 94,
     reliability: 95,
@@ -461,7 +462,7 @@ export const FARMS: Farm[] = [
     growingMethod: 'Open field',
     certifications: ['ADAFSA GAP', 'Emirates Quality Mark'],
     preferredLanguage: 'Arabic',
-    contactName: 'Obaid Al Mansoori',
+    contactName: 'Farm manager',
     fulfilmentRate: 88,
     qualityScore: 92,
     reliability: 87,
@@ -509,7 +510,7 @@ export const FARMS: Farm[] = [
     growingMethod: 'Net house',
     certifications: ['ADAFSA GAP'],
     preferredLanguage: 'Urdu',
-    contactName: 'Bilal Haider',
+    contactName: 'Farm manager',
     fulfilmentRate: 84,
     qualityScore: 83,
     reliability: 82,
@@ -557,7 +558,7 @@ export const FARMS: Farm[] = [
     growingMethod: 'Open field',
     certifications: ['Organic (certified)', 'ADAFSA GAP'],
     preferredLanguage: 'English',
-    contactName: 'Latifa Al Nuaimi',
+    contactName: 'Farm manager',
     fulfilmentRate: 86,
     qualityScore: 93,
     reliability: 85,
@@ -605,7 +606,7 @@ export const FARMS: Farm[] = [
     growingMethod: 'Open field',
     certifications: ['ADAFSA GAP', 'Emirates Quality Mark'],
     preferredLanguage: 'Arabic',
-    contactName: 'Hamad Al Ketbi',
+    contactName: 'Farm manager',
     fulfilmentRate: 92,
     qualityScore: 95,
     reliability: 93,
@@ -653,7 +654,7 @@ export const FARMS: Farm[] = [
     growingMethod: 'Aquaculture',
     certifications: ['ADAFSA Aquaculture', 'Cold-chain Verified'],
     preferredLanguage: 'English',
-    contactName: 'Ahmed Al Shamsi',
+    contactName: 'Farm manager',
     fulfilmentRate: 96,
     qualityScore: 94,
     reliability: 94,
@@ -673,6 +674,11 @@ export const FARMS: Farm[] = [
       },
     ],
   },
+];
+
+export const FARMS: Farm[] = [
+  ...CORE_FARMS.map((f) => ({ ...f, ...CORE_EXTRAS[f.id] })),
+  ...NEW_FARMS,
 ];
 
 export const FARM_MAP: Record<string, Farm> = Object.fromEntries(FARMS.map((f) => [f.id, f]));
