@@ -7,6 +7,7 @@ import {
   Cpu,
   Gauge,
   Leaf,
+  Presentation,
   PackageCheck,
   Sprout,
   Target,
@@ -125,13 +126,22 @@ export function ControlTower() {
             </h1>
             <p className="mt-1.5 text-sm text-white/85">Here&rsquo;s your local sourcing network today.</p>
           </div>
-          <Link
-            to="/engine"
-            className="sr-btn shrink-0 self-start bg-white text-brand-800 shadow-soft hover:bg-brand-50 md:self-auto"
-          >
-            <Cpu size={15} />
-            Run Commitment Engine
-          </Link>
+          <div className="flex shrink-0 flex-wrap items-center gap-2 self-start md:self-auto">
+            <Link
+              to="/minister"
+              className="sr-btn border border-white/30 bg-white/10 text-white backdrop-blur hover:bg-white/20"
+            >
+              <Presentation size={15} />
+              Minister Mode
+            </Link>
+            <Link
+              to="/engine"
+              className="sr-btn bg-white text-brand-800 shadow-soft hover:bg-brand-50"
+            >
+              <Cpu size={15} />
+              Run Commitment Engine
+            </Link>
+          </div>
         </header>
       </ImagePanel>
 

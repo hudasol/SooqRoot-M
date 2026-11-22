@@ -135,6 +135,12 @@ export const CAPABILITY_LABEL: Record<PartnerCapability, { en: string; ar: strin
   crate_return: { en: 'Crate return', ar: 'إرجاع الصناديق' },
 };
 
+/** Partner name in the chosen language, looked up by its English name. */
+export function partnerLabel(name: string, lang: 'en' | 'ar'): string {
+  if (lang === 'en') return name;
+  return PARTNERS.find((p) => p.name === name)?.nameAr ?? name;
+}
+
 export function getPartner(id: string): Partner | undefined {
   return PARTNER_MAP[id];
 }

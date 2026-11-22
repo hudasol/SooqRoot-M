@@ -30,6 +30,13 @@ export function CommandPalette({ open, onClose }: { open: boolean; onClose: () =
         group: 'Pages',
         to: n.to,
       })),
+      {
+        id: 'nav-minister',
+        label: 'Minister Mode',
+        sub: 'Full screen presentation',
+        group: 'Pages',
+        to: '/minister',
+      },
       ...orders.map((o) => ({
         id: o.id,
         label: `${o.ref}, ${getProduct(o.productId).name}`,
