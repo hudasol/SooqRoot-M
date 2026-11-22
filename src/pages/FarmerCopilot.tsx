@@ -8,7 +8,7 @@ import {
   Phone,
   Send,
   Smartphone,
-  Sparkles,
+  Cpu,
 } from 'lucide-react';
 import { useStore } from '../state/AppStore';
 import {
@@ -249,7 +249,7 @@ export function FarmerCopilot() {
                         : 'hover:border-brand-300'
                     }`}
                   >
-                    <Sparkles size={10} />
+                    <Cpu size={10} />
                     {t.label}
                   </button>
                 ))}

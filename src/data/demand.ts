@@ -1,6 +1,6 @@
 import { Demand } from '../types';
 
-/** Demo buyer demand records feeding the October 2026 cycle. */
+/** Sample buyer demand records feeding the October 2026 cycle. */
 export const DEMANDS: Demand[] = [
   {
     id: 'dem-001',

@@ -53,7 +53,7 @@ export function Login() {
     e.preventDefault();
     setError(null);
     setLoading(true);
-    // Brief delay so the loading state is visible - this is a demo sign-in,
+    // Brief delay so the loading state is visible - this is a sign in gate,
     // there is no authentication service behind it.
     window.setTimeout(() => {
       const result = signIn(username, password);
@@ -63,7 +63,7 @@ export function Login() {
     }, 550);
   };
 
-  const fillDemo = () => {
+  const fillCredentials = () => {
     setUsername(DEMO_CREDENTIALS.username);
     setPassword(DEMO_CREDENTIALS.password);
     setError(null);
@@ -261,7 +261,7 @@ export function Login() {
               </div>
               <button
                 type="button"
-                onClick={fillDemo}
+                onClick={fillCredentials}
                 className="shrink-0 rounded-lg border border-sand-300 bg-white px-2.5 py-1.5 text-2xs font-semibold text-sand-600 transition hover:bg-sand-50 dark:border-sand-600 dark:bg-charcoal-900 dark:text-sand-200 dark:hover:bg-charcoal-800"
               >
                 Fill

@@ -5,7 +5,7 @@ import {
   Check,
   ClipboardList,
   Plus,
-  Sparkles,
+  Cpu,
   Trash2,
   Wand2,
   Zap,
@@ -472,7 +472,7 @@ export function BuyerDemand() {
                       </td>
                       <td>
                         <Badge tone={d.source === 'AI translator' ? 'violet' : 'neutral'}>
-                          {d.source === 'AI translator' ? <Sparkles size={10} /> : null}
+                          {d.source === 'AI translator' ? <Cpu size={10} /> : null}
                           {d.source}
                         </Badge>
                       </td>
@@ -569,7 +569,7 @@ function AiTranslator({
         title="AI Demand Translator"
         subtitle="Paste what the buyer actually wrote. SooqRoot turns it into a structured, commitable demand record."
         icon={<Wand2 size={16} />}
-        action={<Badge tone="violet" icon={<Sparkles size={10} />}>On-device</Badge>}
+        action={<Badge tone="violet" icon={<Cpu size={10} />}>On-device</Badge>}
       />
 
       <div className="mt-4 grid gap-4 lg:grid-cols-2">
@@ -599,7 +599,7 @@ function AiTranslator({
           <PackagingCheckPanel text={text} />
           <Button
             className="mt-3 w-full"
-            icon={<Sparkles size={15} />}
+            icon={<Cpu size={15} />}
             onClick={run}
             loading={phase === 'working'}
           >
@@ -677,7 +677,7 @@ function AiTranslator({
                 <ul className="mt-3 space-y-1 border-t border-charcoal-100 pt-3 dark:border-charcoal-800">
                   {result.notes.map((n, i) => (
                     <li key={i} className="flex gap-2 text-2xs text-charcoal-500 dark:text-charcoal-400">
-                      <Sparkles size={11} className="mt-0.5 shrink-0 text-brand-500" />
+                      <Cpu size={11} className="mt-0.5 shrink-0 text-brand-500" />
                       {n}
                     </li>
                   ))}

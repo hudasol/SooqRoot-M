@@ -50,10 +50,10 @@ export function Settings() {
       <PageHeader
         eyebrow="System"
         title="Settings"
-        subtitle="Profile, appearance and demo data controls for this environment."
+        subtitle="Profile, appearance and sample data controls for this environment."
         actions={
           <Badge tone="sand" icon={<Info size={12} />}>
-            Demonstration environment
+            Sample network
           </Badge>
         }
       />
@@ -61,17 +61,17 @@ export function Settings() {
       {resetDone ? (
         <div className="flex items-center gap-2.5 rounded-xl border border-brand-200 bg-brand-50 px-4 py-3 text-sm font-semibold text-brand-700 dark:border-brand-800 dark:bg-brand-900 dark:text-brand-100 animate-in">
           <RotateCcw size={16} />
-          Demo data restored to its opening state.
+          Sample data restored to its opening state.
         </div>
       ) : null}
 
       <div className="grid gap-4 lg:grid-cols-2">
         {/* ---------------- Profile ---------------- */}
         <Card>
-          <CardHeader title="Profile" subtitle="The signed-in demo account" icon={<User size={16} />} />
+          <CardHeader title="Profile" subtitle="The signed in account" icon={<User size={16} />} />
           <div className="mt-4 flex items-center gap-4">
             <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-gradient text-lg font-bold text-white">
-              AA
+              HM
             </span>
             <div>
               <div className="text-base font-bold text-charcoal-900 dark:text-white">
@@ -91,7 +91,7 @@ export function Settings() {
               }
             />
             <DataRow label="Session scope" value="This browser tab only" />
-            <DataRow label="Environment" value="Demonstration build" />
+            <DataRow label="Environment" value="Sample supply network" />
           </div>
           <Button
             variant="secondary"
@@ -158,11 +158,11 @@ export function Settings() {
         </Card>
       </div>
 
-      {/* ---------------- Demo data ---------------- */}
+      {/* ---------------- Sample data ---------------- */}
       <Card>
         <CardHeader
-          title="Demo data"
-          subtitle="This environment has no database. Everything below is an illustrative dataset held in the browser."
+          title="Sample data"
+          subtitle="This environment has no database. Figures use a sample supply network held in the browser."
           icon={<Database size={16} />}
         />
 
@@ -178,13 +178,13 @@ export function Settings() {
             <ShieldAlert size={18} className="mt-0.5 shrink-0 text-sand-600 dark:text-sand-300" />
             <div>
               <div className="text-xs font-bold text-charcoal-800 dark:text-charcoal-100">
-                Nothing here is live commercial data
+                Sample supply network
               </div>
               <p className="mt-1 text-2xs leading-relaxed text-charcoal-600 dark:text-charcoal-300">
-                Farms, buyers, volumes, prices and impact figures are illustrative and were authored
-                for demonstration. Sign-in is a demo gate, not a secure authentication service. State
-                persists to this browser&rsquo;s local storage so a demo survives a page refresh, it
-                is never sent anywhere.
+                Farms, buyers, volumes, prices and impact figures belong to a sample network. State
+                persists to this browser&rsquo;s local storage and is never sent anywhere. The data
+                layer reads farms, harvest windows and allocations through a repository interface
+                that can be pointed at a hosted database (see supabase/schema.sql).
               </p>
             </div>
           </div>
@@ -193,14 +193,14 @@ export function Settings() {
         <div className="mt-4 flex flex-col gap-3 border-t border-charcoal-100 pt-4 dark:border-charcoal-800 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <div className="text-xs font-semibold text-charcoal-800 dark:text-charcoal-100">
-              Reset demo data
+              Reset sample data
             </div>
             <div className="mt-0.5 text-2xs text-charcoal-400">
               Restores farms, orders, demand, exceptions and activity to their opening state.
             </div>
           </div>
           <Button variant="danger" icon={<RotateCcw size={15} />} onClick={() => setConfirmReset(true)}>
-            Reset demo data
+            Reset sample data
           </Button>
         </div>
       </Card>
@@ -208,7 +208,7 @@ export function Settings() {
       <Modal
         open={confirmReset}
         onClose={() => setConfirmReset(false)}
-        title="Reset demo data?"
+        title="Reset sample data?"
         subtitle="This cannot be undone."
         size="sm"
         footer={
@@ -232,9 +232,9 @@ export function Settings() {
         }
       >
         <p className="text-sm leading-relaxed text-charcoal-600 dark:text-charcoal-300">
-          Anything created during this session, new demand records, issued commitment packs, resolved
-          exceptions, sent Copilot messages. Will be discarded and the dataset returned to its
-          opening state. Your sign-in stays active.
+          New demand records, issued commitment packs, resolved exceptions and sent Copilot messages
+          from this session will be discarded and the dataset returned to its opening state. Your
+          sign in stays active.
         </p>
       </Modal>
     </div>

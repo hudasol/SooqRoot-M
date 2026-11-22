@@ -77,7 +77,7 @@ export interface Product {
   nameAr: string;
   category: ProductCategory;
   unit: Unit;
-  /** Indicative demo reference price, AED per unit */
+  /** Indicative reference price (estimate), AED per unit */
   refPrice: number;
   /** Days from commitment to harvest readiness */
   leadDays: number;
@@ -209,7 +209,7 @@ export interface Demand {
   /** Populated when structured by the AI demand translator */
   aiConfidence?: number;
   aiNotes?: string[];
-  source: 'Portal' | 'AI translator' | 'Email' | 'Contract' | 'Demo';
+  source: 'Portal' | 'AI translator' | 'Email' | 'Contract';
 }
 
 /* ---------------- Procurement cycles ---------------- */

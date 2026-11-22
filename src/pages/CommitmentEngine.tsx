@@ -9,7 +9,6 @@ import {
   RotateCcw,
   Send,
   ShieldCheck,
-  Sparkles,
   Target,
   Terminal,
   Truck,
@@ -507,7 +506,7 @@ export function CommitmentEngine() {
             <CardHeader
               title="Scoring model"
               subtitle="Weighted signals behind every farm rank"
-              icon={<Sparkles size={16} />}
+              icon={<Cpu size={16} />}
             />
             <div className="mt-4 space-y-2.5">
               {(result.candidates[0]?.signals ?? []).map((s) => (

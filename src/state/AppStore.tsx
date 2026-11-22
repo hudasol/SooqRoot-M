@@ -17,7 +17,7 @@ import { clearAll, clearSession, loadItem, loadSession, saveItem, saveSession } 
 import { computeMetrics, NetworkMetrics } from '../lib/metrics';
 
 /* ============================================================
-   Demo application store.
+   Application store.
 
    There is no database and no backend. State lives in React,
    persists to localStorage where persistence makes the demo
@@ -30,7 +30,7 @@ export const DEMO_CREDENTIALS = { username: 'Huda', password: '123' };
 export const DEMO_PROFILE: Omit<DemoSession, 'loggedInAt'> = {
   username: 'Huda',
   displayName: 'Huda Mueen',
-  role: 'Administrator / Product Demo',
+  role: 'Founder and CEO',
 };
 
 interface AppStore {
@@ -141,7 +141,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       u.toLowerCase() !== DEMO_CREDENTIALS.username.toLowerCase() ||
       password !== DEMO_CREDENTIALS.password
     ) {
-      return { ok: false, error: 'Those credentials do not match a demo account.' };
+      return { ok: false, error: 'Those credentials do not match an account.' };
     }
     const next: DemoSession = { ...DEMO_PROFILE, loggedInAt: new Date().toISOString() };
     setSession(next);

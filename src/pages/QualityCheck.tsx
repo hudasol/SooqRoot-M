@@ -12,7 +12,7 @@ import {
   ScanLine,
   Send,
   ShieldCheck,
-  Sparkles,
+  Cpu,
   Timer,
 } from 'lucide-react';
 import { useStore } from '../state/AppStore';
@@ -192,7 +192,7 @@ export function QualityCheck() {
     pushActivity({
       kind: 'exception',
       title: `Quality check logged, Grade ${result.grade} on ${product.name}`,
-      detail: `${batchRef} · score ${result.score}/100 · ${farm?.name ?? 'farm'} · simulated grading`,
+      detail: `${batchRef} · score ${result.score}/100 · ${farm?.name ?? 'farm'} · indicative grading`,
       actor: 'Huda Mueen',
     });
     setLogged(true);
@@ -214,13 +214,12 @@ export function QualityCheck() {
       />
 
       <div className="flex items-start gap-3 rounded-xl border border-sand-200 bg-sand-50 p-4 dark:border-sand-600 dark:bg-sand-600/15">
-        <Sparkles size={16} className="mt-0.5 shrink-0 text-sand-600 dark:text-sand-300" />
+        <Cpu size={16} className="mt-0.5 shrink-0 text-sand-600 dark:text-sand-300" />
         <p className="text-2xs leading-relaxed text-charcoal-600 dark:text-charcoal-300">
-          <span className="font-bold text-charcoal-800 dark:text-charcoal-100">How this demo works.</span>{' '}
-          The photo never leaves your device. SooqRoot reads real colour statistics out of the frame
-          mean hue, saturation, brightness spread and dark-patch share, and maps them onto a grading
-          report with fixed thresholds. It is a <span className="font-semibold">simulation for demonstration</span>,
-          not a trained agronomy model, so treat the grade as illustrative.
+          <span className="font-bold text-charcoal-800 dark:text-charcoal-100">How the check works.</span>{' '}
+          The photo never leaves your device. SooqRoot reads colour statistics from the frame: mean
+          hue, saturation, brightness spread and dark patch share. It maps them onto a grading report
+          with fixed thresholds. The grade is an indicative estimate to confirm at the packhouse.
         </p>
       </div>
 
@@ -487,7 +486,7 @@ export function QualityCheck() {
                 ) : null}
               </div>
               <p className="mt-2 text-center text-[10px] text-charcoal-400">
-                Simulated result · demo data
+                Indicative estimate, confirm at the packhouse
               </p>
             </Card>
           ) : (
