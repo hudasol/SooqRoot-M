@@ -10,7 +10,53 @@ export type ThemePreference = 'light' | 'dark' | 'system';
 
 export type Grade = 'A' | 'B' | 'Mixed';
 export type Unit = 'kg' | 'crates' | 'boxes' | 'jars';
-export type Emirate = 'Abu Dhabi' | 'Dubai' | 'Sharjah' | 'Al Ain Region';
+export type Emirate =
+  | 'Abu Dhabi'
+  | 'Dubai'
+  | 'Sharjah'
+  | 'Al Ain Region'
+  | 'Fujairah'
+  | 'Ras Al Khaimah';
+
+/** The four kinds of supply SooqRoot coordinates. */
+export type SupplyKind = 'fresh_produce' | 'dates' | 'honey' | 'aquaculture';
+
+export type GrowingMethod =
+  | 'Open field'
+  | 'Greenhouse'
+  | 'Hydroponic'
+  | 'Net house'
+  | 'Aquaculture'
+  | 'Apiary'
+  | 'Indoor vertical'
+  | 'Climate greenhouse';
+
+/** Field note regions the sample network is spread across. */
+export type FarmRegion =
+  | 'Al Khatim'
+  | 'Al Saad'
+  | 'Al Rahba'
+  | 'Al Bahya'
+  | 'Masafi'
+  | 'Dibba'
+  | 'Kalba'
+  | 'Liwa'
+  | 'Sweihan'
+  | 'Al Dhaid'
+  | 'Mleiha'
+  | 'Dubai Industrial City'
+  | 'Al Quoz'
+  | 'Al Foah'
+  | 'Ras Al Khaimah';
+
+export type FacilityCapability = 'cooling' | 'ro_water' | 'greenhouse' | 'indoor';
+export type ForemanLanguage = 'ar' | 'ur' | 'en';
+export type PartnerCapability =
+  | 'collection'
+  | 'consolidation'
+  | 'cold_chain'
+  | 'delivery'
+  | 'crate_return';
 
 export type HealthStatus = 'healthy' | 'attention' | 'risk';
 
@@ -75,7 +121,22 @@ export interface Farm {
   lng: number;
   distanceKm: number;
   hectares: number;
-  growingMethod: 'Open field' | 'Greenhouse' | 'Hydroponic' | 'Net house' | 'Aquaculture' | 'Apiary';
+  growingMethod: GrowingMethod;
+  /** Field note region (see FarmRegion). */
+  region: FarmRegion;
+  /** Sample format registration number, used on batch passports. */
+  farmRegistrationNo: string;
+  /** Provenance claims that apply to every batch from this farm. */
+  provenanceTags: string[];
+  /** Language the foreman reads, used for harvest and packing cards. */
+  foremanLanguage: ForemanLanguage;
+  /** Cycle locked: accepts only orders placed 21 to 45 days or more ahead. */
+  advanceOnly: boolean;
+  /** Shortest lead time, in days, the farm can serve. */
+  minLeadDays: number;
+  /** Pesticide residue clearance from the lab is still pending. */
+  labClearancePending: boolean;
+  facility: FacilityCapability[];
   certifications: string[];
   preferredLanguage: 'Arabic' | 'English' | 'Urdu';
   contactName: string;
@@ -126,7 +187,15 @@ export interface DemandLine {
   deliveryLocation: string;
   preferredOrigin: string;
   notes?: string;
+  /** Packaging detail, filled when the demand is structured. */
+  packagingType?: string;
+  reusable?: boolean;
+  crateCount?: number;
+  packagingStatus?: PackagingStatus;
+  flagReason?: string;
 }
+
+export type PackagingStatus = 'compliant' | 'flagged';
 
 export interface Demand {
   id: string;
@@ -197,6 +266,16 @@ export interface CommitmentAllocation {
   harvestDate: string;
   batchId: string;
   rationale: string[];
+  /** Collection, consolidation and delivery partners for this allocation. */
+  partnerChain?: PartnerChain;
+}
+
+export interface PartnerChain {
+  collection: string;
+  consolidation: string;
+  delivery: string;
+  /** Present when the supply kind needs a cold chain. */
+  coldChain?: string;
 }
 
 export interface Order {
@@ -220,6 +299,11 @@ export interface Order {
   allocations: CommitmentAllocation[];
   health: HealthStatus;
   deliveryLocation: string;
+  packagingType: string;
+  reusable: boolean;
+  crateCount: number;
+  packagingStatus: PackagingStatus;
+  flagReason?: string;
 }
 
 /* ---------------- Operations ---------------- */
@@ -289,11 +373,37 @@ export interface BatchPassport {
   packedOn: string;
   deliveredOn?: string;
   distanceKm: number;
-  co2SavedKg: number;
+  /** Null when the data pack has no import route reference for the product. */
+  co2SavedKg: number | null;
   waterMethod: string;
   certifications: string[];
   checkpoints: { label: string; at: string; by: string; note?: string }[];
   verificationHash: string;
+  farmRegistrationNo: string;
+  region: FarmRegion;
+  /** Harvest lot shared by every delivery drawn from the same farm window. */
+  lotId: string;
+  harvestedAt: string;
+  lotKg: number;
+  provenanceTags: string[];
+  buyerPoRef: string;
+  /** Ordered handovers: farm, collection partner, distributor, buyer. */
+  custodyChain: CustodyStep[];
+  /** Time and temperature readings, aquaculture batches only. */
+  coldChainLog?: ColdChainReading[];
+}
+
+export interface CustodyStep {
+  role: 'Farm' | 'Collection partner' | 'Distributor' | 'Buyer';
+  party: string;
+  at: string;
+  location: string;
+}
+
+export interface ColdChainReading {
+  at: string;
+  tempC: number;
+  point: string;
 }
 
 /* ---------------- Intelligence ---------------- */
