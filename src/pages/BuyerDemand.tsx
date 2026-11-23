@@ -82,7 +82,7 @@ function blankLine(): DraftLine {
     unit: 'kg',
     grade: 'A',
     packaging: '5kg reusable crates',
-    requiredBy: '2026-10-22',
+    requiredBy: '2026-12-10',
     frequency: 'Weekly',
     deliveryLocation: LOCATIONS[1],
     preferredOrigin: ORIGINS[0],
@@ -194,7 +194,7 @@ export function BuyerDemand() {
       {justApproved ? (
         <div className="flex items-center gap-2.5 rounded-xl border border-brand-200 bg-brand-50 px-4 py-3 text-sm font-semibold text-brand-700 dark:border-brand-800 dark:bg-brand-900 dark:text-brand-100 animate-in">
           <Check size={16} />
-          Demand {justApproved} approved and added to the October 2026 procurement pipeline.
+          Demand {justApproved} approved and added to the December 2026 procurement pipeline.
         </div>
       ) : null}
 
@@ -275,7 +275,7 @@ export function BuyerDemand() {
             label="Demand title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            placeholder="October produce programme"
+            placeholder="December produce programme"
             containerClassName="md:col-span-2"
           />
         </div>

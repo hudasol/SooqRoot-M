@@ -74,7 +74,7 @@ export const LAB_CLEARANCE_BUFFER_HOURS = 48;
 /** Share of a pooled farm's reserve released as buffer inventory for short lead orders. */
 export const BUFFER_RELEASE_SHARE = 0.5;
 /** The sample "today" used to measure order lead time. */
-export const SAMPLE_TODAY = '2026-09-15';
+export const SAMPLE_TODAY = '2026-11-03';
 
 export const WEIGHTS = {
   confidence: 0.2,
@@ -854,7 +854,7 @@ export const CANONICAL_REQUEST: EngineRequest = {
   qty: 10000,
   unit: 'kg',
   grade: 'A',
-  requiredBy: '2026-10-22',
+  requiredBy: '2026-12-10',
   packaging: '5kg reusable crates',
   buyerLocation: 'Abu Dhabi',
   deliveryEmirate: 'Abu Dhabi',

@@ -1,12 +1,12 @@
 import { Demand } from '../types';
 
-/** Sample buyer demand records feeding the October 2026 cycle. */
+/** Sample buyer demand records feeding the December 2026 cycle. */
 export const DEMANDS: Demand[] = [
   {
     id: 'dem-001',
     ref: 'DM-2601',
     buyerId: 'buyer-emirates-catering',
-    title: 'October tomato programme, twice weekly',
+    title: 'December tomato programme, twice weekly',
     rawText:
       'We need around ten tonnes of good quality tomatoes next month, split into Monday and Thursday deliveries, packed in 5kg reusable crates.',
     createdAt: '2026-09-11',
@@ -17,7 +17,7 @@ export const DEMANDS: Demand[] = [
       '"around ten tonnes" resolved to 10,000 kg',
       '"good quality" mapped to Grade A against your contract spec',
       '"Monday and Thursday" resolved to a twice-weekly schedule',
-      'Procurement window inferred as October 2026 from "next month"',
+      'Procurement window inferred as December 2026 from "next month"',
     ],
     lines: [
       {
@@ -27,7 +27,7 @@ export const DEMANDS: Demand[] = [
         unit: 'kg',
         grade: 'A',
         packaging: '5kg reusable crates',
-        requiredBy: '2026-10-22',
+        requiredBy: '2026-12-10',
         frequency: 'Twice weekly',
         deliveryLocation: 'Abu Dhabi, Mussafah DC',
         preferredOrigin: 'UAE, Al Ain Region preferred',
@@ -51,7 +51,7 @@ export const DEMANDS: Demand[] = [
         unit: 'kg',
         grade: 'A',
         packaging: '5kg reusable crates',
-        requiredBy: '2026-10-12',
+        requiredBy: '2026-12-07',
         frequency: 'Weekly',
         deliveryLocation: 'Al Ain, Central Kitchen',
         preferredOrigin: 'UAE only',
@@ -63,7 +63,7 @@ export const DEMANDS: Demand[] = [
         unit: 'kg',
         grade: 'A',
         packaging: 'Clamshell',
-        requiredBy: '2026-10-18',
+        requiredBy: '2026-12-06',
         frequency: 'Weekly',
         deliveryLocation: 'Al Ain, Central Kitchen',
         preferredOrigin: 'UAE only',
@@ -86,7 +86,7 @@ export const DEMANDS: Demand[] = [
         unit: 'kg',
         grade: 'A',
         packaging: 'Vented crates',
-        requiredBy: '2026-10-16',
+        requiredBy: '2026-12-04',
         frequency: 'Twice weekly',
         deliveryLocation: 'Dubai, Al Quoz DC',
         preferredOrigin: 'UAE preferred, GCC acceptable',
@@ -98,7 +98,7 @@ export const DEMANDS: Demand[] = [
     id: 'dem-004',
     ref: 'DM-2604',
     buyerId: 'buyer-sustainable-city',
-    title: 'SEE Institute campus F&B, November pilot',
+    title: 'SEE Institute campus F&B, December pilot',
     createdAt: '2026-09-13',
     status: 'structured',
     source: 'Portal',
@@ -110,7 +110,7 @@ export const DEMANDS: Demand[] = [
         unit: 'kg',
         grade: 'A',
         packaging: 'Cold-chain totes',
-        requiredBy: '2026-10-20',
+        requiredBy: '2026-12-08',
         frequency: 'Weekly',
         deliveryLocation: 'Dubai, The Sustainable City',
         preferredOrigin: 'UAE only, sub-100km preferred',
@@ -148,7 +148,7 @@ export const DEMAND_PRESETS: DemandPreset[] = [
         qty: 2400,
         grade: 'A',
         packaging: '5kg reusable crates',
-        requiredBy: '2026-10-19',
+        requiredBy: '2026-12-07',
         frequency: 'Weekly',
       },
       {
@@ -156,7 +156,7 @@ export const DEMAND_PRESETS: DemandPreset[] = [
         qty: 1200,
         grade: 'A',
         packaging: '5kg reusable crates',
-        requiredBy: '2026-10-19',
+        requiredBy: '2026-12-07',
         frequency: 'Weekly',
       },
       {
@@ -164,7 +164,7 @@ export const DEMAND_PRESETS: DemandPreset[] = [
         qty: 600,
         grade: 'A',
         packaging: 'Vented crates',
-        requiredBy: '2026-10-19',
+        requiredBy: '2026-12-07',
         frequency: 'Weekly',
       },
     ],
@@ -180,7 +180,7 @@ export const DEMAND_PRESETS: DemandPreset[] = [
         qty: 6000,
         grade: 'A',
         packaging: '5kg reusable crates',
-        requiredBy: '2026-10-23',
+        requiredBy: '2026-12-11',
         frequency: 'Twice weekly',
       },
       {
@@ -188,7 +188,7 @@ export const DEMAND_PRESETS: DemandPreset[] = [
         qty: 900,
         grade: 'Mixed',
         packaging: '5kg reusable crates',
-        requiredBy: '2026-10-23',
+        requiredBy: '2026-12-11',
         frequency: 'Twice weekly',
       },
     ],
@@ -204,7 +204,7 @@ export const DEMAND_PRESETS: DemandPreset[] = [
         qty: 1800,
         grade: 'A',
         packaging: 'Vented crates',
-        requiredBy: '2026-10-17',
+        requiredBy: '2026-12-05',
         frequency: 'Daily',
       },
       {
@@ -212,7 +212,7 @@ export const DEMAND_PRESETS: DemandPreset[] = [
         qty: 2500,
         grade: 'A',
         packaging: '1kg gift boxes',
-        requiredBy: '2026-10-27',
+        requiredBy: '2026-12-15',
         frequency: 'Weekly',
       },
     ],

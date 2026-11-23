@@ -17,7 +17,7 @@ const WEEKDAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 export function HarvestCalendar() {
   const { orders } = useStore();
   const readable = useReadableColor();
-  const [month, setMonth] = useState(9); // 0-indexed: October 2026
+  const [month, setMonth] = useState(11); // 0-indexed: December 2026
   // A 7-column month grid is unreadable on a phone, so start in list view there.
   const [view, setView] = useState<'calendar' | 'list'>(() => {
     try {

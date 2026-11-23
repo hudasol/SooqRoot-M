@@ -226,9 +226,9 @@ export const NEW_FARMS: Farm[] = [
     joinedOn: '2026-05-20',
     status: 'healthy',
     capacity: [
-      line('p-leafy', 620, 120, 30, 'kg', '2026-10-06', '2026-10-18', 90, 8, ['Vented crates', 'Cold-chain totes']),
-      line('p-herbs', 140, 30, 10, 'kg', '2026-10-06', '2026-10-17', 93, 5, ['Clamshell', 'Vented crates']),
-      line('p-tomato', 900, 200, 60, 'kg', '2026-10-10', '2026-10-20', 84, 13, [CRATE, CARTON]),
+      line('p-leafy', 620, 120, 30, 'kg', '2026-11-24', '2026-12-06', 90, 8, ['Vented crates', 'Cold-chain totes']),
+      line('p-herbs', 140, 30, 10, 'kg', '2026-11-24', '2026-12-05', 93, 5, ['Clamshell', 'Vented crates']),
+      line('p-tomato', 900, 200, 60, 'kg', '2026-11-28', '2026-12-08', 84, 13, [CRATE, CARTON]),
     ],
   }),
   build({
@@ -259,9 +259,9 @@ export const NEW_FARMS: Farm[] = [
     joinedOn: '2026-05-27',
     status: 'healthy',
     capacity: [
-      line('p-leafy', 540, 100, 30, 'kg', '2026-10-07', '2026-10-19', 89, 9, ['Vented crates']),
-      line('p-herbs', 150, 40, 10, 'kg', '2026-10-07', '2026-10-18', 92, 6, ['Clamshell']),
-      line('p-tomato', 800, 150, 50, 'kg', '2026-10-11', '2026-10-21', 82, 14, [CRATE]),
+      line('p-leafy', 540, 100, 30, 'kg', '2026-11-25', '2026-12-07', 89, 9, ['Vented crates']),
+      line('p-herbs', 150, 40, 10, 'kg', '2026-11-25', '2026-12-06', 92, 6, ['Clamshell']),
+      line('p-tomato', 800, 150, 50, 'kg', '2026-11-29', '2026-12-09', 82, 14, [CRATE]),
     ],
   }),
   build({
@@ -292,8 +292,8 @@ export const NEW_FARMS: Farm[] = [
     joinedOn: '2026-06-09',
     status: 'healthy',
     capacity: [
-      line('p-mango', 300, 40, 20, 'kg', '2026-10-02', '2026-10-20', 80, 15, ['5kg ventilated cartons']),
-      line('p-capsicum', 650, 120, 40, 'kg', '2026-10-12', '2026-10-24', 78, 17, [CRATE]),
+      line('p-mango', 300, 40, 20, 'kg', '2026-11-27', '2026-12-08', 80, 15, ['5kg ventilated cartons']),
+      line('p-capsicum', 650, 120, 40, 'kg', '2026-11-30', '2026-12-12', 78, 17, [CRATE]),
     ],
   }),
   build({
@@ -324,8 +324,8 @@ export const NEW_FARMS: Farm[] = [
     joinedOn: '2026-06-09',
     status: 'attention',
     capacity: [
-      line('p-mango', 420, 60, 30, 'kg', '2026-10-01', '2026-10-22', 83, 14, ['5kg ventilated cartons']),
-      line('p-eggplant', 560, 80, 30, 'kg', '2026-10-10', '2026-10-24', 79, 16, [CARTON]),
+      line('p-mango', 420, 60, 30, 'kg', '2026-11-26', '2026-12-10', 83, 14, ['5kg ventilated cartons']),
+      line('p-eggplant', 560, 80, 30, 'kg', '2026-11-28', '2026-12-12', 79, 16, [CARTON]),
     ],
   }),
   build({
@@ -356,7 +356,7 @@ export const NEW_FARMS: Farm[] = [
     joinedOn: '2026-06-23',
     status: 'healthy',
     capacity: [
-      line('p-seabass', 1100, 300, 50, 'kg', '2026-10-06', '2026-10-14', 94, 5, ['Iced cooler boxes']),
+      line('p-seabass', 1100, 300, 50, 'kg', '2026-11-24', '2026-12-02', 94, 5, ['Iced cooler boxes']),
     ],
   }),
   build({
@@ -387,7 +387,7 @@ export const NEW_FARMS: Farm[] = [
     joinedOn: '2026-07-14',
     status: 'healthy',
     capacity: [
-      line('p-dates', 8200, 1600, 250, 'kg', '2026-10-03', '2026-10-27', 90, 8, ['1kg gift boxes', '5kg cartons']),
+      line('p-dates', 8200, 1600, 250, 'kg', '2026-11-28', '2026-12-15', 90, 8, ['1kg gift boxes', '5kg cartons']),
     ],
   }),
   build({
@@ -418,9 +418,9 @@ export const NEW_FARMS: Farm[] = [
     joinedOn: '2026-06-30',
     status: 'attention',
     capacity: [
-      line('p-cucumber', 1300, 250, 60, 'kg', '2026-10-05', '2026-10-15', 82, 14, [CRATE]),
-      line('p-eggplant', 900, 150, 40, 'kg', '2026-10-10', '2026-10-23', 80, 15, [CARTON]),
-      line('p-capsicum', 700, 100, 40, 'kg', '2026-10-12', '2026-10-25', 79, 16, [CRATE]),
+      line('p-cucumber', 1300, 250, 60, 'kg', '2026-11-23', '2026-12-03', 82, 14, [CRATE]),
+      line('p-eggplant', 900, 150, 40, 'kg', '2026-11-28', '2026-12-11', 80, 15, [CARTON]),
+      line('p-capsicum', 700, 100, 40, 'kg', '2026-11-30', '2026-12-13', 79, 16, [CRATE]),
     ],
   }),
   build({
@@ -451,8 +451,8 @@ export const NEW_FARMS: Farm[] = [
     joinedOn: '2026-07-07',
     status: 'attention',
     capacity: [
-      line('p-eggplant', 1100, 200, 50, 'kg', '2026-10-09', '2026-10-24', 75, 19, [CARTON]),
-      line('p-tomato', 1500, 300, 80, 'kg', '2026-10-14', '2026-10-24', 72, 21, [CRATE]),
+      line('p-eggplant', 1100, 200, 50, 'kg', '2026-11-27', '2026-12-12', 75, 19, [CARTON]),
+      line('p-tomato', 1500, 300, 80, 'kg', '2026-12-02', '2026-12-12', 72, 21, [CRATE]),
     ],
   }),
   build({
@@ -482,7 +482,7 @@ export const NEW_FARMS: Farm[] = [
     reliability: 90,
     joinedOn: '2026-07-21',
     status: 'healthy',
-    capacity: [line('p-honey', 380, 90, 15, 'jars', '2026-10-01', '2026-10-31', 96, 3, ['500g jars'])],
+    capacity: [line('p-honey', 380, 90, 15, 'jars', '2026-11-26', '2026-12-19', 96, 3, ['500g jars'])],
   }),
   build({
     id: 'farm-dibba-apiary',
@@ -511,7 +511,7 @@ export const NEW_FARMS: Farm[] = [
     reliability: 88,
     joinedOn: '2026-07-21',
     status: 'healthy',
-    capacity: [line('p-honey', 300, 60, 15, 'jars', '2026-10-01', '2026-10-31', 95, 4, ['500g jars'])],
+    capacity: [line('p-honey', 300, 60, 15, 'jars', '2026-11-26', '2026-12-19', 95, 4, ['500g jars'])],
   }),
   build({
     id: 'farm-dic-vertical',
@@ -541,8 +541,8 @@ export const NEW_FARMS: Farm[] = [
     joinedOn: '2026-08-04',
     status: 'healthy',
     capacity: [
-      line('p-leafy', 700, 150, 30, 'kg', '2026-10-05', '2026-10-19', 96, 3, ['Vented crates', 'Cold-chain totes']),
-      line('p-herbs', 220, 50, 10, 'kg', '2026-10-05', '2026-10-18', 97, 2, ['Clamshell']),
+      line('p-leafy', 700, 150, 30, 'kg', '2026-11-23', '2026-12-07', 96, 3, ['Vented crates', 'Cold-chain totes']),
+      line('p-herbs', 220, 50, 10, 'kg', '2026-11-23', '2026-12-06', 97, 2, ['Clamshell']),
     ],
   }),
   build({
@@ -573,8 +573,8 @@ export const NEW_FARMS: Farm[] = [
     joinedOn: '2026-08-11',
     status: 'healthy',
     capacity: [
-      line('p-leafy', 650, 140, 30, 'kg', '2026-10-06', '2026-10-19', 95, 4, ['Vented crates', 'Cold-chain totes']),
-      line('p-herbs', 180, 40, 10, 'kg', '2026-10-06', '2026-10-17', 96, 3, ['Clamshell']),
+      line('p-leafy', 650, 140, 30, 'kg', '2026-11-24', '2026-12-07', 95, 4, ['Vented crates', 'Cold-chain totes']),
+      line('p-herbs', 180, 40, 10, 'kg', '2026-11-24', '2026-12-05', 96, 3, ['Clamshell']),
     ],
   }),
   build({
@@ -605,8 +605,8 @@ export const NEW_FARMS: Farm[] = [
     joinedOn: '2026-08-18',
     status: 'healthy',
     capacity: [
-      line('p-tomato', 2400, 300, 100, 'kg', '2026-10-10', '2026-10-22', 94, 5, [CRATE, 'Punnets']),
-      line('p-capsicum', 700, 100, 40, 'kg', '2026-10-12', '2026-10-24', 92, 6, [CRATE]),
+      line('p-tomato', 2400, 300, 100, 'kg', '2026-11-28', '2026-12-10', 94, 5, [CRATE, 'Punnets']),
+      line('p-capsicum', 700, 100, 40, 'kg', '2026-11-30', '2026-12-12', 92, 6, [CRATE]),
     ],
   }),
   build({
@@ -637,8 +637,8 @@ export const NEW_FARMS: Farm[] = [
     joinedOn: '2026-08-25',
     status: 'healthy',
     capacity: [
-      line('p-tomato', 1800, 200, 80, 'kg', '2026-10-10', '2026-10-22', 93, 5, [CRATE]),
-      line('p-capsicum', 900, 120, 40, 'kg', '2026-10-12', '2026-10-24', 91, 7, [CRATE]),
+      line('p-tomato', 1800, 200, 80, 'kg', '2026-11-28', '2026-12-10', 93, 5, [CRATE]),
+      line('p-capsicum', 900, 120, 40, 'kg', '2026-11-30', '2026-12-12', 91, 7, [CRATE]),
     ],
   }),
 ];

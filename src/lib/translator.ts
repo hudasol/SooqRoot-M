@@ -81,7 +81,7 @@ const MONTHS = [
 ];
 
 /** "next month" is resolved relative to the demo clock. */
-const DEMO_TODAY = new Date('2026-09-15');
+const DEMO_TODAY = new Date('2026-11-03');
 
 function titleCase(s: string): string {
   return s.charAt(0).toUpperCase() + s.slice(1);
@@ -370,6 +370,6 @@ export function translateDemand(text: string): TranslationResult {
 
 export const TRANSLATOR_SAMPLES = [
   'We need around ten tonnes of good quality tomatoes next month, split into Monday and Thursday deliveries, packed in 5kg reusable crates.',
-  'Looking for 2,000 kg of leafy greens in October for our Dubai stores, vented crates, twice a week.',
+  'Looking for 2,000 kg of leafy greens in December for our Dubai stores, vented crates, twice a week.',
   'Can you supply 600 kg premium capsicum next month in 5kg crates, weekly delivery to Mussafah?',
 ];

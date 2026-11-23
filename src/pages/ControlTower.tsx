@@ -120,7 +120,7 @@ export function ControlTower() {
           <div className="max-w-xl">
             <span className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-2.5 py-1 text-2xs font-semibold backdrop-blur">
               <CalendarClock size={12} />
-              Cycle CY-2610 · October 2026
+              Cycle CY-2612 · December 2026
             </span>
             <h1 className="mt-3 font-display text-2xl font-bold tracking-tight drop-shadow-sm md:text-[2rem] md:leading-tight">
               {greeting}, {firstName}
