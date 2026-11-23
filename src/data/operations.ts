@@ -274,7 +274,7 @@ export const BASE_PASSPORTS: BasePassport[] = [
       { label: 'Harvest completed', at: '2026-09-08 04:30', by: 'Field team, Al Khrair' },
       { label: 'Graded & packed', at: '2026-09-08 06:10', by: 'Packhouse 3', note: '99% Grade A' },
       { label: 'Collected', at: '2026-09-08 07:45', by: 'Chilled van AD-77401' },
-      { label: 'Delivered', at: '2026-09-09 05:50', by: 'The Sustainable City F&B' },
+      { label: 'Delivered', at: '2026-09-09 05:50', by: 'Al Waha Hospitality Group' },
     ],
     verificationHash: '0x9c10f5b332',
   },

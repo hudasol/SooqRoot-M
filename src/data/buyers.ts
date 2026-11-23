@@ -52,8 +52,8 @@ export const BUYERS: Buyer[] = [
   },
   {
     id: 'buyer-sustainable-city',
-    name: 'The Sustainable City F&B',
-    nameAr: 'المدينة المستدامة للأغذية',
+    name: 'Al Waha Hospitality Group',
+    nameAr: 'مجموعة الواحة للضيافة',
     segment: 'Institutional',
     emirate: 'Dubai',
     x: 28,
