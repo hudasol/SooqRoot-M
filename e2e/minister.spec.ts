@@ -12,9 +12,6 @@ for (const size of SIZES) {
   for (const lang of LANGS) {
     test(`Minister Mode ${size.w}x${size.h} ${lang}`, async ({ page }) => {
       await page.setViewportSize({ width: size.w, height: size.h });
-      await page.addInitScript((l) => {
-        localStorage.setItem('sooqroot:v2:lang', JSON.stringify(l));
-      }, lang);
       const errors: string[] = [];
       page.on('console', (m) => {
         if (m.type() === 'error') errors.push(m.text());
@@ -23,6 +20,8 @@ for (const size of SIZES) {
 
       await page.goto('/#/minister');
       await page.waitForTimeout(600);
+      // Minister Mode always opens in English and keeps its own language.
+      if (lang === 'ar') await page.getByRole('button', { name: 'عربي' }).click();
       const next = lang === 'ar' ? 'ArrowLeft' : 'ArrowRight';
 
       for (let step = 0; step < 7; step++) {
@@ -54,3 +53,27 @@ for (const size of SIZES) {
     });
   }
 }
+
+test('Minister Mode language does not reach the main application', async ({ page }) => {
+  await page.setViewportSize({ width: 1180, height: 820 });
+  await page.addInitScript(() => {
+    sessionStorage.setItem(
+      'sooqroot:session',
+      JSON.stringify({ username: 'Huda', displayName: 'Huda Mueen', role: 'Founder and CEO', loggedInAt: '2026-11-23T08:00:00.000Z' })
+    );
+  });
+  await page.goto('/#/minister');
+  await page.waitForTimeout(500);
+  await page.getByRole('button', { name: 'عربي' }).click();
+  await expect(page.locator('h1, [lang="ar"]').first()).toBeVisible();
+  await page.getByRole('button', { name: /الخروج من وضع العرض/ }).click();
+  await page.goto('/#/progress');
+  await page.reload();
+  await page.waitForTimeout(800);
+  await expect(page.getByRole('heading', { name: 'Progress', exact: true })).toBeVisible();
+  // Minister Mode opens in English again.
+  await page.goto('/#/minister');
+  await page.reload();
+  await page.waitForTimeout(600);
+  await expect(page.getByRole('button', { name: 'Back' })).toBeVisible();
+});
