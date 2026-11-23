@@ -98,7 +98,7 @@ function PolicyNote({ keys, className = '', capitalise = false }: { keys: Policy
   const { lang } = useLang();
   const text = keys.map((k) => POLICY_SHORT[k][lang]).join(' · ');
   return (
-    <p className={`text-[16px] leading-snug text-charcoal-500 ${className}`}>
+    <p className={`text-[16px] font-semibold leading-snug text-brand-700 ${className}`}>
       {capitalise ? text.replace('initiative', 'Initiative') : text}
     </p>
   );
@@ -608,7 +608,7 @@ function Tile({
 }) {
   return (
     <section className="flex min-h-0 flex-col justify-between rounded-3xl border border-charcoal-200 bg-white px-4 py-3 shadow-soft">
-      <div className="flex items-start gap-3">
+      <div className="flex items-start gap-3 ps-3">
         <span className="mt-0.5 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-700">
           {icon}
         </span>
