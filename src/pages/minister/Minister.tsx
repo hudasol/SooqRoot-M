@@ -11,7 +11,7 @@ import {
   CommitmentStep,
   FarmerStep,
   ImpactStep,
-  ProgressStep,
+  ProgressStepEditorial,
   PilotStep,
 } from './Steps';
 
@@ -87,7 +87,7 @@ export function Minister() {
       case 4:
         return <ImpactStep />;
       case 5:
-        return <ProgressStep />;
+        return <ProgressStepEditorial />;
       default:
         return <PilotStep />;
     }

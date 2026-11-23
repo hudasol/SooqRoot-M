@@ -671,6 +671,65 @@ export function ProgressStep() {
   );
 }
 
+/* ---------------- 5. Progress (editorial layout) ----------------
+   Replaces ProgressStep in Minister.tsx. The earlier ProgressStep above is kept
+   unchanged so the previous layout can be restored with a one line change. */
+
+export function ProgressStepEditorial() {
+  const { pick } = useLang();
+  return (
+    <StepFrame index={5}>
+      <div className="flex h-full flex-col">
+        {/* Timeline */}
+        <ol className="grid shrink-0 grid-cols-7 gap-3 pb-3 pt-1">
+          {TIMELINE.map((e, i) => (
+            <li key={e.id}>
+              <div className="flex items-center">
+                <span
+                  className={`inline-flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-full ${
+                    e.upcoming ? 'border-[1.5px] border-dashed border-charcoal-400 bg-transparent' : 'bg-brand-700'
+                  }`}
+                >
+                  {e.upcoming ? null : <Check size={13} strokeWidth={3} className="text-white" />}
+                </span>
+                {i < TIMELINE.length - 1 ? <span className="ms-2 h-px flex-1 bg-charcoal-300" /> : null}
+              </div>
+              <div className="mt-2 text-[15px] font-bold leading-tight text-charcoal-900">{pick(e.date)}</div>
+              <div className="mt-1 text-[14px] leading-tight text-charcoal-700">{pick(e.short)}</div>
+            </li>
+          ))}
+        </ol>
+
+        {/* Six lessons: two columns, hairline rules, no boxes */}
+        <section className="grid min-h-0 flex-1 grid-cols-2 grid-rows-3 border-t border-charcoal-300">
+          {INCUBATION.map((r, i) => {
+            const left = i % 2 === 0;
+            return (
+              <div
+                key={r.id}
+                className={`flex min-h-0 flex-col justify-start border-b border-charcoal-300 pb-2 pt-3 ${
+                  left ? 'border-e pe-8' : 'ps-8'
+                }`}
+              >
+                <div className="flex items-center justify-between gap-3">
+                  <span className="text-[22px] font-light leading-none text-charcoal-700" dir="ltr">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <span className="rounded-full bg-brand-200/70 px-3 py-0.5 text-[14px] font-semibold leading-tight text-brand-800">
+                    {pick(r.where)}
+                  </span>
+                </div>
+                <div className="mt-1.5 text-[18px] font-bold leading-tight text-charcoal-900">{pick(r.advice)}</div>
+                <div className="mt-1 text-[15px] leading-snug text-charcoal-700">{pick(r.implemented)}</div>
+              </div>
+            );
+          })}
+        </section>
+      </div>
+    </StepFrame>
+  );
+}
+
 /* ---------------- 6. Pilot ---------------- */
 
 export function PilotStep() {
