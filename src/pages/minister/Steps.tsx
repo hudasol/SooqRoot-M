@@ -766,7 +766,6 @@ export function PilotStep() {
               <div key={s.label} className="rounded-2xl border border-charcoal-200 bg-white p-4 shadow-soft">
                 <Icon size={26} className="text-brand-600" />
                 <div className="mt-2 text-[24px] font-extrabold leading-tight text-brand-800">{headline}</div>
-                <div className="text-[16px] font-semibold text-charcoal-500">{s.label}</div>
               </div>
             );
           })}
