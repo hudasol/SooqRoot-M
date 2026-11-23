@@ -48,6 +48,7 @@ export function HarvestCard({ lang, productId, spec, qtyKg, deliverBy, farmCode,
   const harvestLabel = spec.harvest === 'stem' ? term('stemCut', lang) : term('whole', lang);
   const cold = spec.notes.some((n) => /0 to 5|10 to 12/.test(n.en));
   const fontClass = lang === 'en' ? '' : 'font-ar';
+  const kg = lang === 'ar' ? 'كغ' : 'kg';
   const tile = compact ? 'px-2.5 py-1.5' : 'p-3';
 
   return (
@@ -73,15 +74,15 @@ export function HarvestCard({ lang, productId, spec, qtyKg, deliverBy, farmCode,
           </div>
           <div className="text-end">
             <div className="text-xs font-semibold text-charcoal-500">{term('qty', lang)}</div>
-            <div className="font-display text-2xl font-extrabold leading-none" dir="ltr">
-              {qtyKg.toLocaleString('en-US')} <span className="text-base font-bold">kg</span>
+            <div className="font-display text-2xl font-extrabold leading-none" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
+              {qtyKg.toLocaleString('en-US')} <span className="text-base font-bold">{kg}</span>
             </div>
           </div>
         </div>
 
         <div className="grid grid-cols-2 gap-2">
           <SpecTile icon={<Package size={20} />} label={term('box', lang)} value={cardText(spec.packType, lang)} pad={tile} />
-          <SpecTile icon={<Scale size={20} />} label={term('weight', lang)} value={`${spec.packKg} kg`} pad={tile} ltrValue />
+          <SpecTile icon={<Scale size={20} />} label={term('weight', lang)} value={`${spec.packKg} ${kg}`} pad={tile} ltrValue={lang !== 'ar'} />
           <SpecTile icon={<Ruler size={20} />} label={term('size', lang)} value={sizeOverride ?? cardText(spec.size, lang)} pad={tile} />
           <SpecTile
             icon={spec.harvest === 'stem' ? <Scissors size={20} /> : <Sprout size={20} />}
