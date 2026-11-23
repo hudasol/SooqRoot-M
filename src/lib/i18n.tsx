@@ -26,10 +26,17 @@ interface LangValue {
 
 const Ctx = createContext<LangValue | null>(null);
 
-export function LangProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLangState] = useState<Lang>(() => loadItem<Lang>('lang', 'en'));
+/**
+ * With persist set to false the language is local to this provider: it starts in English,
+ * is never read from or written to storage, and is gone when the provider unmounts.
+ * Minister Mode uses this so its language never reaches the rest of the application.
+ */
+export function LangProvider({ children, persist = true }: { children: React.ReactNode; persist?: boolean }) {
+  const [lang, setLangState] = useState<Lang>(() => (persist ? loadItem<Lang>('lang', 'en') : 'en'));
 
-  useEffect(() => saveItem('lang', lang), [lang]);
+  useEffect(() => {
+    if (persist) saveItem('lang', lang);
+  }, [lang, persist]);
 
   const setLang = useCallback((l: Lang) => setLangState(l), []);
   const toggle = useCallback(() => setLangState((l) => (l === 'en' ? 'ar' : 'en')), []);

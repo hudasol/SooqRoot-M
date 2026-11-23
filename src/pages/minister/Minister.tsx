@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, X } from 'lucide-react';
-import { useLang } from '../../lib/i18n';
+import { LangProvider, useLang } from '../../lib/i18n';
 import { useStore } from '../../state/AppStore';
 import { asset } from '../../lib/assets';
 import { MINISTER_COPY } from '../../data/pack';
@@ -26,7 +26,16 @@ import {
 
 const STEP_COUNT = MINISTER_COPY.length;
 
+/** Minister Mode keeps its own language, always English on entry and discarded on exit. */
 export function Minister() {
+  return (
+    <LangProvider persist={false}>
+      <MinisterScreen />
+    </LangProvider>
+  );
+}
+
+function MinisterScreen() {
   const { lang, dir, isAr, setLang, t } = useLang();
   const { session } = useStore();
   const navigate = useNavigate();
@@ -40,6 +49,8 @@ export function Minister() {
   // Arrow keys follow reading direction.
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
+      // An open dialog (the Assumptions drawer) takes the keys first.
+      if (document.querySelector('[role="dialog"]')) return;
       const fwd = isAr ? 'ArrowLeft' : 'ArrowRight';
       const bwd = isAr ? 'ArrowRight' : 'ArrowLeft';
       if (e.key === fwd || e.key === 'PageDown') next();
@@ -49,8 +60,6 @@ export function Minister() {
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-      // An open dialog (the Assumptions drawer) takes the keys first.
-      if (document.querySelector('[role="dialog"]')) return;
   }, [isAr, next, back]);
 
   const exit = () => navigate(session ? '/dashboard' : '/login');
