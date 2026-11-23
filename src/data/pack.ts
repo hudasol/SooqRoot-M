@@ -505,15 +505,18 @@ export const MINISTER_COPY: MinisterStepCopy[] = [
     key: 'order',
     label: { en: 'Buyer order', ar: 'طلب المشتري' },
     headline: { en: 'The buyer writes it the way they already do', ar: 'يكتب المشتري طلبه كما اعتاد' },
-    support: { en: 'SooqRoot turns it into an exact specification', ar: 'يحوّله سوق روت إلى مواصفات دقيقة' },
+    support: {
+      en: 'AI and data are the new language of agriculture. SooqRoot turns the order into an exact specification.',
+      ar: 'الذكاء الاصطناعي والبيانات لغة الزراعة الجديدة. يحوّل سوق روت الطلب إلى مواصفات دقيقة.',
+    },
   },
   {
     key: 'commitment',
     label: { en: 'Commitment', ar: 'الالتزام' },
     headline: { en: 'Many farms, one reliable supplier', ar: 'مزارع متعددة، مورّد واحد موثوق' },
     support: {
-      en: 'Fresh produce, dates, honey and fish, coordinated as one supply',
-      ar: 'الخضروات والفواكه والتمور والعسل والأسماك، تُنسَّق كإمداد واحد',
+      en: 'Bridging the marketing gap for UAE farmers: fresh produce, dates, honey and fish, as one supply.',
+      ar: 'سدّ الفجوة التسويقية أمام مزارعي الإمارات: الخضروات والتمور والعسل والأسماك، كإمداد واحد.',
     },
   },
   {
@@ -524,8 +527,8 @@ export const MINISTER_COPY: MinisterStepCopy[] = [
       ar: 'يتلقى كل مزارع تعليمات واضحة بالعربية عبر واتساب',
     },
     support: {
-      en: 'Harvest, grading and packing, confirmed before harvest',
-      ar: 'الحصاد والفرز والتعبئة، مؤكدة قبل الحصاد',
+      en: 'The Emirati farmer is the backbone. Harvest, grading and packing, confirmed before harvest.',
+      ar: 'المزارع الإماراتي هو العمود الفقري. الحصاد والفرز والتعبئة، مؤكدة قبل الحصاد.',
     },
   },
   {
@@ -533,8 +536,8 @@ export const MINISTER_COPY: MinisterStepCopy[] = [
     label: { en: 'National impact', ar: 'الأثر الوطني' },
     headline: { en: 'The numbers the national targets need', ar: 'الأرقام التي تحتاجها الأهداف الوطنية' },
     support: {
-      en: 'Local share against 25%, food loss avoided, packaging compliance',
-      ar: 'الحصة المحلية مقابل 25%، والفاقد الغذائي المتجنَّب، والالتزام بالتعبئة',
+      en: 'From supporting production to creating market demand: local share against 25%, food loss, packaging.',
+      ar: 'من دعم الإنتاج إلى ضمان الاستهلاك وخلق طلب سوقي: الحصة المحلية مقابل 25%، والفاقد المتجنَّب، والالتزام بالتعبئة.',
     },
   },
   {
@@ -550,7 +553,10 @@ export const MINISTER_COPY: MinisterStepCopy[] = [
     key: 'pilot',
     label: { en: 'Pilot', ar: 'التجربة' },
     headline: { en: 'Ready for a 12 week pilot', ar: 'جاهزون لتجربة تشغيلية لمدة 12 أسبوعاً' },
-    support: { en: 'Up to ten farms, five buyers and three crops', ar: 'حتى عشر مزارع وخمسة مشترين وثلاثة محاصيل' },
+    support: {
+      en: 'Stable, long term demand for local produce: up to ten farms, five buyers and three crops.',
+      ar: 'طلب مستقر وطويل الأمد على المنتج المحلي: حتى عشر مزارع وخمسة مشترين وثلاثة محاصيل.',
+    },
   },
 ];
 
