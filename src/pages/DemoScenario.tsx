@@ -63,7 +63,7 @@ const STORY = [
     to: '/copilot',
     icon: MessageSquare,
     title: 'Farmer Copilot',
-    line: 'Show the Arabic commitment message going to Al Ain Farm 018 over WhatsApp, and the farm replying YES.',
+    line: 'Show the Arabic commitment message going to Khatim Family Farms over WhatsApp, and the farm replying YES.',
     say: '“The farmer never logs into a dashboard. They get a WhatsApp in Arabic and reply with one word.”',
   },
   {

@@ -13,8 +13,8 @@ const CORE_FARMS: Omit<Farm, keyof FarmExtras>[] = [
   {
     id: 'farm-alain-018',
     code: 'AA-018',
-    name: 'Al Ain Farm 018',
-    nameAr: 'مزرعة العين ٠١٨',
+    name: 'Khatim Family Farms',
+    nameAr: 'مزارع الخاتم العائلية',
     area: 'Al Ain, Al Hayer',
     areaAr: 'العين، الهير',
     emirate: 'Al Ain Region',
