@@ -35,6 +35,22 @@ function addMinutes(stamp: string, minutes: number): string {
   return `${d.getUTCFullYear()}-${pad(d.getUTCMonth() + 1)}-${pad(d.getUTCDate())} ${pad(d.getUTCHours())}:${pad(d.getUTCMinutes())}`;
 }
 
+/**
+ * A passport records a batch as harvested or delivered, so it cannot carry a date after 22 November 2026.
+ * The cut off is 21 November so that the arrival at the buyer the morning after harvest is on or before the 22nd.
+ * A later date moves back in whole weeks, which keeps the weekday. Earlier dates are left as they are.
+ */
+const PASSPORT_LATEST = '2026-11-21';
+
+function settleDate(value: string): string {
+  const day = value.slice(0, 10);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(day) || day <= PASSPORT_LATEST) return value;
+  const dayMs = Date.parse(`${day}T00:00:00Z`);
+  const over = Math.round((dayMs - Date.parse(`${PASSPORT_LATEST}T00:00:00Z`)) / 86400000);
+  const back = Math.ceil(over / 7) * 7;
+  return new Date(dayMs - back * 86400000).toISOString().slice(0, 10) + value.slice(10);
+}
+
 function buyerName(id: string): string {
   return BUYERS.find((b) => b.id === id)?.name ?? 'Buyer';
 }
@@ -70,16 +86,24 @@ function coldChainFor(batchId: string, harvestedAt: string, deliveredAt: string,
 function lotIdFor(farm: Farm | undefined, productId: string, harvestDate: string): string {
   const live = NETWORK_FARMS.find((f) => f.id === farm?.id);
   const line = live?.capacity.find((c) => c.productId === productId && c.harvestWindowEnd >= harvestDate);
-  return `LOT-${farm?.code ?? 'XX'}-${productId.replace('p-', '').toUpperCase()}-${(line?.harvestWindowStart ?? harvestDate).replace(/-/g, '')}`;
+  return `LOT-${farm?.code ?? 'XX'}-${productId.replace('p-', '').toUpperCase()}-${settleDate(line?.harvestWindowStart ?? harvestDate).replace(/-/g, '')}`;
 }
 
 function enrich(
-  base: Omit<
+  recorded: Omit<
     BatchPassport,
     'farmRegistrationNo' | 'region' | 'lotId' | 'harvestedAt' | 'lotKg' | 'provenanceTags' | 'buyerPoRef' | 'custodyChain' | 'coldChainLog'
   >,
   order: Order | undefined
 ): BatchPassport {
+  // The lot is chosen from the recorded harvest date, then every date shown on the passport is settled.
+  const base = {
+    ...recorded,
+    harvestedOn: settleDate(recorded.harvestedOn),
+    packedOn: settleDate(recorded.packedOn),
+    deliveredOn: recorded.deliveredOn ? settleDate(recorded.deliveredOn) : undefined,
+    checkpoints: recorded.checkpoints.map((c) => ({ ...c, at: settleDate(c.at) })),
+  };
   const farm = FARM_MAP[base.farmId];
   const product = getProduct(base.productId);
   const harvestedAt = `${base.harvestedOn} 05:40`;
@@ -117,7 +141,7 @@ function enrich(
     co2SavedKg: miles.co2SavedKg,
     farmRegistrationNo: farm?.farmRegistrationNo ?? 'SR-FR-XX-0000',
     region: farm?.region ?? 'Al Saad',
-    lotId: lotIdFor(farm, base.productId, base.harvestedOn),
+    lotId: lotIdFor(farm, base.productId, recorded.harvestedOn),
     harvestedAt,
     lotKg: product.unit === 'kg' ? base.qty : 0,
     provenanceTags: farm?.provenanceTags ?? [],
