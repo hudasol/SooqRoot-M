@@ -21,6 +21,15 @@ export interface TimelineEntry {
   upcoming?: boolean;
 }
 
+/** Photo of the 2nd prize at the From Farm to Market University Hackathon, 26 April 2026 (public/images). */
+export const HACKATHON_PHOTO: { src: string; caption: Bi } = {
+  src: 'images/hackathon-2nd-prize.jpg',
+  caption: {
+    en: 'Receiving 2nd prize from Her Excellency Dr Amna bint Abdullah Al Dahak, From Farm to Market University Hackathon, 26 April 2026.',
+    ar: 'استلام الجائزة الثانية من معالي الدكتورة آمنة بنت عبدالله الضحاك، هاكاثون «من المزرعة إلى السوق» للجامعات، 26 أبريل 2026.',
+  },
+};
+
 export const TIMELINE: TimelineEntry[] = [
   {
     id: 'tl-1',

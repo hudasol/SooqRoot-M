@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 import {
   Building2,
@@ -22,7 +22,8 @@ import {
   Wheat,
 } from 'lucide-react';
 import { useLang, num } from '../../lib/i18n';
-import { COMPANY, INCUBATION, INCUBATION_HEADING, MINISTER_COPY, PILOT, TIMELINE } from '../../data/pack';
+import { COMPANY, HACKATHON_PHOTO, INCUBATION, INCUBATION_HEADING, MINISTER_COPY, PILOT, TIMELINE } from '../../data/pack';
+import { asset } from '../../lib/assets';
 import { POLICY_SHORT, PolicyKey } from '../../data/policy';
 import { partnerLabel } from '../../data/partners';
 import { CANONICAL_REQUEST, checkPackaging, runCommitmentEngine } from '../../lib/engine';
@@ -689,13 +690,65 @@ export function ProgressStep() {
    Replaces ProgressStep in Minister.tsx. The earlier ProgressStep above is kept
    unchanged so the previous layout can be restored with a one line change. */
 
+/* Small rounded photo under the hackathon timeline item. Tap to open it large, tap again to close. */
+function HackathonThumb() {
+  const { pick, isAr, lang } = useLang();
+  const [open, setOpen] = useState(false);
+  const src = asset(HACKATHON_PHOTO.src);
+  const caption = pick(HACKATHON_PHOTO.caption);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        setOpen(false);
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [open]);
+
+  return (
+    <>
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        aria-label={caption}
+        className="relative mt-1 block h-[44px] w-[52px] overflow-hidden rounded-xl border border-charcoal-200 bg-charcoal-100"
+      >
+        {/* Cropped to the two people and the cheque. */}
+        <img src={src} alt="" draggable={false} className="absolute max-w-none" style={{ width: 96, left: -11, top: -14 }} />
+      </button>
+      {open
+        ? createPortal(
+            <div
+              role="dialog"
+              aria-modal="true"
+              dir={isAr ? 'rtl' : 'ltr'}
+              lang={lang}
+              onClick={() => setOpen(false)}
+              onTouchStart={(e) => e.stopPropagation()}
+              onTouchEnd={(e) => e.stopPropagation()}
+              className={`fixed inset-0 z-[60] flex cursor-pointer flex-col items-center justify-center gap-5 bg-charcoal-950/85 p-8 ${isAr ? 'font-ar' : ''}`}
+            >
+              <img src={src} alt={caption} className="max-h-[68vh] max-w-full rounded-2xl shadow-lift" />
+              <p className="max-w-3xl text-center text-[22px] font-medium leading-snug text-white">{caption}</p>
+            </div>,
+            document.body
+          )
+        : null}
+    </>
+  );
+}
+
 export function ProgressStepEditorial() {
   const { pick, t, isAr } = useLang();
   return (
     <StepFrame index={5}>
       <div className="flex h-full flex-col">
         {/* Timeline */}
-        <ol className="grid shrink-0 grid-cols-7 gap-3 pb-3 pt-1">
+        <ol className="grid shrink-0 grid-cols-7 gap-3 pb-2 pt-0">
           {TIMELINE.map((e, i) => (
             <li key={e.id}>
               <div className="flex items-center">
@@ -710,11 +763,12 @@ export function ProgressStepEditorial() {
               </div>
               <div className="mt-2 text-[15px] font-bold leading-tight text-charcoal-900">{pick(e.date)}</div>
               <div className="mt-1 text-[14px] leading-tight text-charcoal-700">{pick(e.short)}</div>
+              {e.id === 'tl-2' ? <HackathonThumb /> : null}
             </li>
           ))}
         </ol>
 
-        <h2 className="shrink-0 pb-2 pt-1 text-[19px] font-bold leading-tight text-charcoal-900">{pick(INCUBATION_HEADING)}</h2>
+        <h2 className="shrink-0 pb-1.5 pt-0 text-[19px] font-bold leading-tight text-charcoal-900">{pick(INCUBATION_HEADING)}</h2>
 
         {/* Six lessons: two columns, hairline rules, no boxes */}
         <section className="grid min-h-0 flex-1 grid-cols-2 grid-rows-[auto_auto_auto] border-t border-charcoal-300">
@@ -723,7 +777,7 @@ export function ProgressStepEditorial() {
             return (
               <div
                 key={r.id}
-                className={`flex min-h-0 flex-col justify-start border-b border-charcoal-300 pb-2.5 pt-2.5 ${
+                className={`flex min-h-0 flex-col justify-start border-b border-charcoal-300 pb-2 pt-2 ${
                   left ? 'border-e pe-8' : 'ps-8'
                 }`}
               >
