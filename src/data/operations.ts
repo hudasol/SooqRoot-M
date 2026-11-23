@@ -449,7 +449,7 @@ export const COPILOT_MESSAGES: CopilotMessage[] = [
     channel: 'WhatsApp',
     text: 'Good morning Saeed. SooqRoot has a backup commitment for 500 kg of Grade A tomatoes on order SR-2610, harvest by 12 December, 5kg reusable crates. Payment on delivery confirmation. Reply YES to accept.',
     textAr:
-      'صباح الخير سعيد. لدى سوق روت التزام احتياطي بمقدار ٥٠٠ كجم طماطم درجة أولى ضمن الطلب SR-2610، الحصاد قبل ٢٤ أكتوبر، في صناديق ٥ كجم قابلة لإعادة الاستخدام. الدفع عند تأكيد التسليم. أرسل "نعم" للقبول.',
+      'صباح الخير سعيد. لدى سوق روت التزام احتياطي بمقدار ٥٠٠ كجم طماطم درجة أولى ضمن الطلب SR-2610، الحصاد قبل ١٢ ديسمبر، في صناديق ٥ كجم قابلة لإعادة الاستخدام. الدفع عند تأكيد التسليم. أرسل "نعم" للقبول.',
     status: 'read',
   },
   {
@@ -459,7 +459,7 @@ export const COPILOT_MESSAGES: CopilotMessage[] = [
     direction: 'inbound',
     channel: 'WhatsApp',
     text: 'Yes, accepted. We can harvest on 11 December instead if that helps.',
-    textAr: 'نعم، موافق. يمكننا الحصاد يوم ٢٣ أكتوبر إذا كان ذلك أفضل.',
+    textAr: 'نعم، موافق. يمكننا الحصاد يوم ١١ ديسمبر إذا كان ذلك أفضل.',
     status: 'replied',
   },
   {
