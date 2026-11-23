@@ -20,7 +20,7 @@ import {
   Wheat,
 } from 'lucide-react';
 import { useLang, num } from '../../lib/i18n';
-import { COMPANY, INCUBATION, MINISTER_COPY, PILOT, TIMELINE } from '../../data/pack';
+import { COMPANY, INCUBATION, INCUBATION_HEADING, MINISTER_COPY, PILOT, TIMELINE } from '../../data/pack';
 import { POLICY_SHORT, PolicyKey } from '../../data/policy';
 import { partnerLabel } from '../../data/partners';
 import { CANONICAL_REQUEST, checkPackaging, runCommitmentEngine } from '../../lib/engine';
@@ -676,7 +676,7 @@ export function ProgressStep() {
    unchanged so the previous layout can be restored with a one line change. */
 
 export function ProgressStepEditorial() {
-  const { pick } = useLang();
+  const { pick, t, isAr } = useLang();
   return (
     <StepFrame index={5}>
       <div className="flex h-full flex-col">
@@ -700,27 +700,41 @@ export function ProgressStepEditorial() {
           ))}
         </ol>
 
+        <h2 className="shrink-0 pb-2 pt-1 text-[19px] font-bold leading-tight text-charcoal-900">{pick(INCUBATION_HEADING)}</h2>
+
         {/* Six lessons: two columns, hairline rules, no boxes */}
-        <section className="grid min-h-0 flex-1 grid-cols-2 grid-rows-3 border-t border-charcoal-300">
+        <section className="grid min-h-0 flex-1 grid-cols-2 grid-rows-[auto_auto_auto] border-t border-charcoal-300">
           {INCUBATION.map((r, i) => {
             const left = i % 2 === 0;
             return (
               <div
                 key={r.id}
-                className={`flex min-h-0 flex-col justify-start border-b border-charcoal-300 pb-2 pt-3 ${
+                className={`flex min-h-0 flex-col justify-start border-b border-charcoal-300 pb-2.5 pt-2.5 ${
                   left ? 'border-e pe-8' : 'ps-8'
                 }`}
               >
                 <div className="flex items-center justify-between gap-3">
-                  <span className="text-[22px] font-light leading-none text-charcoal-700" dir="ltr">
+                  <span className="text-[20px] font-light leading-none text-charcoal-700" dir="ltr">
                     {String(i + 1).padStart(2, '0')}
                   </span>
-                  <span className="rounded-full bg-brand-200/70 px-3 py-0.5 text-[14px] font-semibold leading-tight text-brand-800">
+                  <span className="rounded-full bg-brand-200/70 px-3 py-0.5 text-[13.5px] font-semibold leading-tight text-brand-800">
                     {pick(r.where)}
                   </span>
                 </div>
-                <div className="mt-1.5 text-[18px] font-bold leading-tight text-charcoal-900">{pick(r.advice)}</div>
-                <div className="mt-1 text-[15px] leading-snug text-charcoal-700">{pick(r.implemented)}</div>
+                <dl className="mt-1.5 space-y-1">
+                  <div className="flex gap-3">
+                    <dt className={`whitespace-nowrap ${isAr ? 'w-[84px] pt-[4px] text-[14px]' : 'w-[98px] pt-[3px] text-[12px]'} shrink-0 font-bold uppercase leading-tight tracking-wider text-charcoal-500`}>
+                      {t('Advice', 'نصيحة')}
+                    </dt>
+                    <dd className={`font-bold leading-snug text-charcoal-900 ${isAr ? 'text-[18px]' : 'text-[16px]'}`}>{pick(r.advice)}</dd>
+                  </div>
+                  <div className="flex gap-3">
+                    <dt className={`whitespace-nowrap ${isAr ? 'w-[84px] pt-[4px] text-[14px]' : 'w-[98px] pt-[3px] text-[12px]'} shrink-0 font-bold uppercase leading-tight tracking-wider text-brand-700`}>
+                      {t('What we did', 'ما قمنا به')}
+                    </dt>
+                    <dd className={`leading-snug text-charcoal-700 ${isAr ? 'text-[17px]' : 'text-[15px]'}`}>{pick(r.implemented)}</dd>
+                  </div>
+                </dl>
               </div>
             );
           })}
