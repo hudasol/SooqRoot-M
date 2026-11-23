@@ -404,7 +404,8 @@ export function FarmerStep() {
   const alloc = RESULT.primary[0];
   const farm = FARM_MAP[alloc.farmId];
   const spec = specFor(CANONICAL_REQUEST.productId, 'A')!;
-  const DELIVERY_ISO = '2026-11-23';
+  // Fixed delivery date for the sample order: Thursday 10 December 2026.
+  const DELIVERY_ISO = '2026-12-10';
   const deliverEn = new Date(DELIVERY_ISO).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
   const deliverUr = new Date(DELIVERY_ISO).toLocaleDateString('ur-PK-u-nu-latn', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
   const deliver = cardLang === 'en' ? deliverEn : cardLang === 'ur' ? deliverUr : arDate(DELIVERY_ISO);
