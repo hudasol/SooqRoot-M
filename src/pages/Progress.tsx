@@ -3,8 +3,10 @@ import { ArrowUpRight, Calendar, CheckCircle2, Fish, Handshake, Sprout, Users } 
 import { Badge, Card, CardHeader, PageHeader } from '../components/ui';
 import { LangToggle } from '../components/LangToggle';
 import { useLang } from '../lib/i18n';
+import { asset } from '../lib/assets';
 import {
   FARMER_INSIGHTS,
+  HACKATHON_PHOTO,
   INCUBATION,
   INCUBATION_HEADING,
   PRODUCERS,
@@ -37,7 +39,8 @@ export function Progress() {
         actions={<LangToggle />}
       />
 
-      {/* ---------------- Timeline ---------------- */}
+      {/* ---------------- Timeline and photo ---------------- */}
+      <div className="grid items-start gap-4 lg:grid-cols-[minmax(0,1fr)_320px]">
       <Card>
         <CardHeader title={t('Timeline', 'الجدول الزمني')} icon={<Calendar size={16} />} />
         <ol className="relative mt-5 space-y-5 border-s border-charcoal-100 ps-6 dark:border-charcoal-800">
@@ -58,6 +61,17 @@ export function Progress() {
           ))}
         </ol>
       </Card>
+
+      <Card>
+        <img
+          src={asset(HACKATHON_PHOTO.src)}
+          alt={pick(HACKATHON_PHOTO.caption)}
+          className="w-full rounded-xl object-cover"
+          style={{ aspectRatio: '3 / 2' }}
+        />
+        <p className="sr-sub mt-3 text-xs">{pick(HACKATHON_PHOTO.caption)}</p>
+      </Card>
+      </div>
 
       {/* ---------------- Incubation ---------------- */}
       <Card padded={false}>
