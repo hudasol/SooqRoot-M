@@ -96,65 +96,74 @@ export interface IncubationRow {
   to: string;
 }
 
+/** Section heading above the six incubation cards (Minister Mode step 6 and the Progress page). */
+export const INCUBATION_HEADING: Bi = {
+  en: 'What the incubation advised, and what we did',
+  ar: 'ما نصحتنا به الحاضنة، وما قمنا به',
+};
+
 export const INCUBATION: IncubationRow[] = [
   {
     id: 'inc-1',
-    advice: { en: 'Do not own trucks or warehouses (the lesson of Twiga Foods)', ar: 'لا تمتلكوا شاحنات ولا مستودعات (درس شركة Twiga Foods)' },
-    implemented: {
-      en: 'Partner Network: every commitment names who collects, who consolidates and who delivers',
-      ar: 'شبكة الشركاء: يحدد كل التزام من يجمع ومن يوحّد الشحنات ومن يسلّم',
+    advice: {
+      en: "Don't own trucks or warehouses. Twiga Foods failed under those costs.",
+      ar: 'لا تمتلكوا شاحنات ولا مستودعات. فقد تعثرت شركة Twiga Foods تحت وطأة هذه التكاليف.',
     },
-    where: { en: 'Partners inside each order', ar: 'الشركاء داخل كل طلب' },
+    implemented: {
+      en: 'We own none. Local partners collect, pack and deliver every order.',
+      ar: 'لا نمتلك أياً منها. يتولى شركاء محليون جمع كل طلب وتعبئته وتسليمه.',
+    },
+    where: { en: 'See it: Partner Network', ar: 'للاطلاع: شبكة الشركاء' },
     to: '/partners',
   },
   {
     id: 'inc-2',
-    advice: { en: 'Do not carry the logistics costs either', ar: 'ولا تتحملوا تكاليف الخدمات اللوجستية أيضاً' },
+    advice: { en: "Don't carry the delivery costs.", ar: 'لا تتحملوا تكاليف التوصيل.' },
     implemented: {
-      en: 'Asset light economics: logistics carried by partners, SooqRoot earns a software fee',
-      ar: 'اقتصاديات خفيفة الأصول: يتحمل الشركاء الخدمات اللوجستية، ويحصل سوق روت على رسوم برمجية',
+      en: 'Partners carry delivery costs. SooqRoot earns a software fee.',
+      ar: 'يتحمل الشركاء تكاليف التوصيل، ويحصل سوق روت على رسوم برمجية.',
     },
-    where: { en: 'Economics card on each order', ar: 'بطاقة الاقتصاديات في كل طلب' },
+    where: { en: 'See it: every order', ar: 'للاطلاع: كل طلب' },
     to: '/orders',
   },
   {
     id: 'inc-3',
-    advice: { en: 'Coordinate, do not only help buyers discover farms', ar: 'نسّقوا، ولا تكتفوا بمساعدة المشترين على اكتشاف المزارع' },
+    advice: { en: "Don't just help buyers find farms.", ar: 'لا تكتفوا بمساعدة المشترين على إيجاد المزارع.' },
     implemented: {
-      en: 'Commitments before harvest, backup cover and an auditable engine',
-      ar: 'التزامات قبل الحصاد، وتغطية احتياطية، ومحرك قابل للتدقيق',
+      en: 'We confirm each order across farms before harvest, with a backup farm.',
+      ar: 'نؤكد كل طلب عبر عدة مزارع قبل الحصاد، مع مزرعة احتياطية.',
     },
-    where: { en: 'Commitment Engine', ar: 'محرك الالتزامات' },
+    where: { en: 'See it: Commitment step', ar: 'للاطلاع: خطوة الالتزام' },
     to: '/engine',
   },
   {
     id: 'inc-4',
-    advice: { en: 'Run a narrow pilot', ar: 'ابدؤوا بتجربة تشغيلية محدودة النطاق' },
+    advice: { en: 'Start with a small pilot.', ar: 'ابدؤوا بتجربة صغيرة.' },
     implemented: {
-      en: 'Pilot Plan: 5 to 10 farms, 2 to 5 buyers, 1 to 3 categories, 8 to 12 weeks',
-      ar: 'خطة التجربة: من 5 إلى 10 مزارع، ومن 2 إلى 5 مشترين، ومن فئة واحدة إلى ثلاث فئات، من 8 إلى 12 أسبوعاً',
+      en: '5 to 10 farms, 2 to 5 buyers, up to 3 crops, 8 to 12 weeks.',
+      ar: 'من 5 إلى 10 مزارع، ومن 2 إلى 5 مشترين، وحتى 3 محاصيل، لمدة 8 إلى 12 أسبوعاً.',
     },
-    where: { en: 'Pilot Plan', ar: 'خطة التجربة' },
+    where: { en: 'See it: Pilot Plan', ar: 'للاطلاع: خطة التجربة' },
     to: '/pilot',
   },
   {
     id: 'inc-5',
-    advice: { en: 'Measure the impact', ar: 'قيسوا الأثر' },
+    advice: { en: 'Measure the results.', ar: 'قيسوا النتائج.' },
     implemented: {
-      en: 'Success metrics set in advance, including kilograms committed before harvest',
-      ar: 'مؤشرات نجاح محددة مسبقاً، منها الكيلوغرامات الملتزم بها قبل الحصاد',
+      en: 'Success measures are set before the pilot starts, including kilograms sold before harvest.',
+      ar: 'نحدد مقاييس النجاح قبل بدء التجربة، ومنها الكيلوغرامات المباعة قبل الحصاد.',
     },
-    where: { en: 'Pilot Plan', ar: 'خطة التجربة' },
+    where: { en: 'See it: Pilot Plan', ar: 'للاطلاع: خطة التجربة' },
     to: '/pilot',
   },
   {
     id: 'inc-6',
-    advice: { en: 'Listen to the field', ar: 'أنصتوا إلى الميدان' },
+    advice: { en: 'Listen to farmers.', ar: 'أنصتوا إلى المزارعين.' },
     implemented: {
-      en: 'Producer and farmer insights, each linked to the feature it shaped',
-      ar: 'ملاحظات المنتجين والمزارعين، وكل منها مرتبط بالميزة التي شكّلتها',
+      en: "Every main feature comes from a farmer's problem we heard in the field.",
+      ar: 'كل ميزة رئيسية تنبع من مشكلة سمعناها من مزارع في الميدان.',
     },
-    where: { en: 'Progress page', ar: 'صفحة التقدم' },
+    where: { en: 'See it: Progress page', ar: 'للاطلاع: صفحة التقدم' },
     to: '/progress',
   },
 ];

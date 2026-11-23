@@ -59,14 +59,16 @@ The Arabic names for `SUSTAINABLE_PRODUCT`, `NEMA`, `FOOD_SECURITY_2051`, `WASTE
 
 ## 4. What the incubation told us, and how we implemented it (FINAL)
 
-| Advice | How we implemented it | Where it shows |
+Section heading shown above the six cards in Minister Mode step 6 and on the Progress page: "What the incubation advised, and what we did" (Arabic: "ما نصحتنا به الحاضنة، وما قمنا به").
+
+| Advice | What we did | Tag |
 |---|---|---|
-| Do not own trucks or warehouses (the lesson of Twiga Foods) | Partner Network: every commitment names who collects, who consolidates and who delivers | Partners inside each order |
-| Do not carry the logistics costs either | Asset light economics: logistics carried by partners, SooqRoot earns a software fee | Economics card on each order |
-| Coordinate, do not only help buyers discover farms | Commitments before harvest, backup cover and an auditable engine | Commitment Engine |
-| Run a narrow pilot | Pilot Plan: 5 to 10 farms, 2 to 5 buyers, 1 to 3 categories, 8 to 12 weeks | Pilot Plan |
-| Measure the impact | Success metrics set in advance, including kilograms committed before harvest | Pilot Plan |
-| Listen to the field | Producer and farmer insights, each linked to the feature it shaped | Progress page |
+| Don't own trucks or warehouses. Twiga Foods failed under those costs. | We own none. Local partners collect, pack and deliver every order. | See it: Partner Network |
+| Don't carry the delivery costs. | Partners carry delivery costs. SooqRoot earns a software fee. | See it: every order |
+| Don't just help buyers find farms. | We confirm each order across farms before harvest, with a backup farm. | See it: Commitment step |
+| Start with a small pilot. | 5 to 10 farms, 2 to 5 buyers, up to 3 crops, 8 to 12 weeks. | See it: Pilot Plan |
+| Measure the results. | Success measures are set before the pilot starts, including kilograms sold before harvest. | See it: Pilot Plan |
+| Listen to farmers. | Every main feature comes from a farmer's problem we heard in the field. | See it: Progress page |
 
 ---
 
