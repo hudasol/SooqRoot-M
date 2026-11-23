@@ -23,18 +23,18 @@ import { SCENE } from '../data/media';
 const PILLARS = [
   {
     icon: Network,
-    title: 'Demand → Commitment',
-    body: 'Commercial buyer demand becomes pre-harvest commitments across a network of UAE farms.',
+    title: 'Demand to Commitment',
+    body: 'Commercial buyer demand becomes commitments before harvest across a network of UAE farms.',
   },
   {
     icon: Leaf,
-    title: 'Harvest → Fulfilment',
-    body: 'Coordinated harvest windows, consolidated collection and cold-chain tracked delivery.',
+    title: 'Harvest to Fulfilment',
+    body: 'Coordinated harvest windows, consolidated collection and cold chain tracked delivery.',
   },
   {
     icon: ShieldCheck,
     title: 'Proof',
-    body: 'Auditable batch passports and a measured local procurement index for every buyer.',
+    body: 'Auditable batch passports and a local procurement index for every buyer.',
   },
 ];
 
@@ -102,8 +102,8 @@ export function Login() {
               <span className="text-brand-200">Confirmed Before Harvest.</span>
             </h1>
             <p className="mt-5 text-[0.95rem] leading-relaxed text-white/85">
-              SooqRoot converts commercial buyer demand into pre-harvest commitments across UAE farms,
-              intelligently coordinates fulfilment, and gives buyers auditable proof of local sourcing.
+              SooqRoot converts commercial buyer demand into commitments before harvest across UAE farms,
+              coordinates fulfilment, and gives buyers auditable proof of local sourcing.
             </p>
 
             <div className="mt-9 space-y-4">
