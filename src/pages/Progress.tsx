@@ -6,6 +6,7 @@ import { useLang } from '../lib/i18n';
 import {
   FARMER_INSIGHTS,
   INCUBATION,
+  INCUBATION_HEADING,
   PRODUCERS,
   PRODUCERS_PATTERN,
   PRODUCERS_SUMMARY,
@@ -62,7 +63,7 @@ export function Progress() {
       <Card padded={false}>
         <div className="p-5 pb-3">
           <CardHeader
-            title={t('What the incubation told us, and how we implemented it', 'ما أخبرتنا به الحاضنة، وكيف نفّذناه')}
+            title={pick(INCUBATION_HEADING)}
             icon={<Handshake size={16} />}
           />
         </div>
@@ -70,9 +71,9 @@ export function Progress() {
           <table className="w-full min-w-[720px] text-sm">
             <thead>
               <tr className="border-y border-charcoal-100 bg-canvas-soft text-start text-2xs font-bold uppercase tracking-wider text-charcoal-500 dark:border-charcoal-800 dark:bg-charcoal-950">
-                <th className="px-5 py-2.5 text-start">{t('Advice', 'النصيحة')}</th>
-                <th className="px-5 py-2.5 text-start">{t('How we implemented it', 'كيف نفّذناها')}</th>
-                <th className="px-5 py-2.5 text-start">{t('Where it shows', 'أين تظهر')}</th>
+                <th className="px-5 py-2.5 text-start">{t('Advice', 'نصيحة')}</th>
+                <th className="px-5 py-2.5 text-start">{t('What we did', 'ما قمنا به')}</th>
+                <th className="px-5 py-2.5 text-start">{t('Link', 'الرابط')}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-charcoal-100 dark:divide-charcoal-800">
