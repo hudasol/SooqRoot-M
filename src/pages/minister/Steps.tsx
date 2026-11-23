@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { createPortal } from 'react-dom';
 import {
   Building2,
   CalendarClock,
@@ -8,6 +9,7 @@ import {
   ChevronDown,
   Droplet,
   Fish,
+  Info,
   Leaf,
   MessageCircle,
   PackageCheck,
@@ -32,6 +34,7 @@ import { networkWithout, ORDERS } from '../../data/orders';
 import { nationalImpact } from '../../lib/national';
 import { SOURCES } from '../../lib/emissions';
 import { HarvestCard } from '../../components/HarvestCard';
+import { AssumptionsDrawer } from '../../components/OrderCards';
 import { specFor } from '../../data/specs';
 import { CardLang } from '../../data/glossary';
 import { SupplyKind } from '../../types';
@@ -492,6 +495,7 @@ export function FarmerStep() {
 
 export function ImpactStep() {
   const { isAr, t } = useLang();
+  const [drawer, setDrawer] = useState(false);
   const meets = IMPACT.localSharePct >= IMPACT.targetPct;
 
   return (
@@ -572,8 +576,16 @@ export function ImpactStep() {
             policy={
               <div>
                 <PolicyNote keys={['NET_ZERO', 'GREEN_AGENDA']} />
-                <p className="text-[14px] leading-snug text-charcoal-400">
-                  {SOURCES.defra.label}; {SOURCES.glec.label}
+                <p className="mt-0.5 flex items-center gap-2 text-[14px] leading-snug text-charcoal-500">
+                  <bdi dir="ltr">
+                    {SOURCES.defra.short}; {SOURCES.glec.short}
+                  </bdi>
+                  <button
+                    onClick={() => setDrawer(true)}
+                    className="inline-flex items-center gap-1 rounded-full bg-brand-50 px-3 py-0.5 text-[14px] font-semibold text-brand-700"
+                  >
+                    <Info size={14} /> {t('Assumptions', 'الافتراضات')}
+                  </button>
                 </p>
               </div>
             }
@@ -590,6 +602,7 @@ export function ImpactStep() {
           />
         </div>
       </div>
+      {drawer ? createPortal(<AssumptionsDrawer open onClose={() => setDrawer(false)} />, document.body) : null}
     </StepFrame>
   );
 }

@@ -14,10 +14,12 @@ import { getProduct } from '../data/products';
 export const SOURCES = {
   defra: {
     label: 'UK DESNZ / DEFRA Greenhouse Gas Conversion Factors 2026',
+    short: 'DEFRA 2026',
     url: 'https://www.gov.uk/government/collections/government-conversion-factors-for-company-reporting',
   },
   glec: {
     label: 'Smart Freight Centre GLEC Framework v3.2',
+    short: 'GLEC v3.2',
     url: 'https://www.smartfreightcentre.org/en/how-to-implement-items/what-is-glec-framework/58/',
   },
 } as const;

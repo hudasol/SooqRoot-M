@@ -49,6 +49,8 @@ export function Minister() {
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
     // eslint-disable-next-line react-hooks/exhaustive-deps
+      // An open dialog (the Assumptions drawer) takes the keys first.
+      if (document.querySelector('[role="dialog"]')) return;
   }, [isAr, next, back]);
 
   const exit = () => navigate(session ? '/dashboard' : '/login');
