@@ -24,7 +24,7 @@ for (const size of SIZES) {
       if (lang === 'ar') await page.getByRole('button', { name: 'عربي' }).click();
       const next = lang === 'ar' ? 'ArrowLeft' : 'ArrowRight';
 
-      for (let step = 0; step < 7; step++) {
+      for (let step = 0; step < 8; step++) {
         if (step === 1) {
           await page.getByRole('button', { name: /Show the specification|اعرض المواصفات/ }).click();
           await page.waitForTimeout(400);

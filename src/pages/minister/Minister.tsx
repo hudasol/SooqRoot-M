@@ -12,6 +12,7 @@ import {
   FarmerStep,
   ImpactStep,
   ProgressStepEditorial,
+  MinistryValueStep,
   PilotStep,
 } from './Steps';
 
@@ -99,6 +100,8 @@ function MinisterScreen() {
         return <ImpactStep />;
       case 5:
         return <ProgressStepEditorial />;
+      case 6:
+        return <MinistryValueStep />;
       default:
         return <PilotStep />;
     }

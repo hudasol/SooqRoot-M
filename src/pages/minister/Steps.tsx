@@ -1,12 +1,14 @@
 import { useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 import {
+  Boxes,
   Building2,
   CalendarClock,
   Check,
   CheckCheck,
   CheckCircle2,
   ChevronDown,
+  ClipboardCheck,
   Droplet,
   Fish,
   Info,
@@ -22,7 +24,7 @@ import {
   Wheat,
 } from 'lucide-react';
 import { useLang, num } from '../../lib/i18n';
-import { COMPANY, HACKATHON_PHOTO, INCUBATION, INCUBATION_HEADING, MINISTER_COPY, PILOT, TIMELINE } from '../../data/pack';
+import { COMPANY, HACKATHON_PHOTO, INCUBATION, INCUBATION_HEADING, MINISTER_COPY, MINISTRY_VALUE, PILOT, TIMELINE } from '../../data/pack';
 import { asset } from '../../lib/assets';
 import { POLICY_SHORT, PolicyKey } from '../../data/policy';
 import { partnerLabel } from '../../data/partners';
@@ -812,7 +814,78 @@ export function ProgressStepEditorial() {
   );
 }
 
-/* ---------------- 6. Pilot ---------------- */
+/* ---------------- 6. Ministry value ---------------- */
+
+const BARRIER_ICON: (typeof Leaf)[] = [Sprout, Boxes, ClipboardCheck, Truck];
+
+export function MinistryValueStep() {
+  const { isAr, pick } = useLang();
+  const V = MINISTRY_VALUE;
+  return (
+    <StepFrame index={6}>
+      <div className="flex h-full flex-col gap-2">
+        {/* The barrier, and what SooqRoot does */}
+        <section className="shrink-0">
+          <h2 className="mb-1 text-[16px] font-bold leading-tight text-charcoal-500">{pick(V.barriersLabel)}</h2>
+          <div className="grid grid-cols-4 gap-3">
+            {V.barriers.map((b, i) => {
+              const Icon = BARRIER_ICON[i];
+              return (
+                <div key={b.id} className="rounded-2xl border border-charcoal-200 bg-white px-3 py-2 shadow-soft">
+                  <div className="flex items-start gap-2">
+                    <Icon size={20} className="mt-[1px] shrink-0 text-brand-600" />
+                    <div className={`font-bold leading-tight text-brand-800 ${isAr ? 'text-[17px]' : 'text-[16px]'}`}>{pick(b.barrier)}</div>
+                  </div>
+                  <p className={`mt-0.5 leading-tight text-charcoal-700 ${isAr ? 'text-[15.5px]' : 'text-[14.5px]'}`}>{pick(b.answer)}</p>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* National goals it serves, and what it measures */}
+        <section className="shrink-0">
+          <h2 className="mb-1 text-[16px] font-bold leading-tight text-charcoal-500">{pick(V.goalsLabel)}</h2>
+          <div className="grid grid-cols-4 gap-x-3 gap-y-2">
+            {V.goals.map((g) => (
+              <div key={g.id} className="flex flex-col rounded-2xl border border-charcoal-200 bg-white px-3 pb-2 pt-1.5 shadow-soft">
+                <div className={`font-bold leading-tight text-charcoal-900 ${isAr ? 'text-[16px]' : 'text-[15px]'}`}>{pick(g.title)}</div>
+                <div className={`mt-0.5 leading-tight text-charcoal-600 ${isAr ? 'text-[14.5px]' : 'text-[14px]'}`}>{pick(g.line)}</div>
+                <div className="mt-auto flex pt-1.5">
+                  <Chip tone="brand" className="!whitespace-normal !py-0.5 !text-[13.5px] leading-tight">
+                    {pick(g.measure)}
+                  </Chip>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* What the Ministry puts in, and what comes back */}
+        <section className="flex min-h-0 flex-1 flex-col justify-center rounded-3xl bg-brand-gradient px-6 py-2 text-white shadow-lift">
+          <div className="flex items-center gap-3">
+            <Target size={28} className="shrink-0 text-white/80" />
+            <p className={`font-bold ${isAr ? 'text-[21px] leading-[1.4]' : 'text-[20px] leading-tight'}`}>{pick(V.headline)}</p>
+          </div>
+          <div className="mt-1.5 grid grid-cols-[1fr_1.05fr_1.1fr] gap-6 border-t border-white/25 pt-1.5">
+            {V.columns.map((c) => (
+              <div key={c.id}>
+                <div className={`font-bold leading-tight ${isAr ? 'text-[16px]' : 'text-[15px]'}`}>{pick(c.label)}</div>
+                <div className={`mt-0.5 leading-tight text-white/90 ${isAr ? 'text-[15px]' : 'text-[14px]'}`}>
+                  {c.lines.map((l) => (
+                    <p key={l.en}>{pick(l)}</p>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
+    </StepFrame>
+  );
+}
+
+/* ---------------- 7. Pilot ---------------- */
 
 export function PilotStep() {
   const { pick, t } = useLang();
@@ -823,7 +896,7 @@ export function PilotStep() {
     { icon: CalendarClock, value: PILOT.scope.weeks, label: t('Duration', 'المدة') },
   ];
   return (
-    <StepFrame index={6}>
+    <StepFrame index={7}>
       <div className="flex h-full flex-col gap-4">
         <div className="grid shrink-0 grid-cols-4 gap-4">
           {scope.map((s) => {

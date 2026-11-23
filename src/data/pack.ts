@@ -559,6 +559,15 @@ export const MINISTER_COPY: MinisterStepCopy[] = [
     },
   },
   {
+    key: 'ministry',
+    label: { en: 'Ministry value', ar: 'القيمة للوزارة' },
+    headline: { en: 'What SooqRoot gives the Ministry', ar: 'ما يقدّمه SooqRoot للوزارة' },
+    support: {
+      en: '"From supporting production to creating market demand"',
+      ar: '"ننتقل من مرحلة دعم الإنتاج إلى مرحلة ضمان الاستهلاك وخلق طلب سوقي"',
+    },
+  },
+  {
     key: 'pilot',
     label: { en: 'Pilot', ar: 'التجربة' },
     headline: { en: 'Ready for a 12 week pilot', ar: 'جاهزون لتجربة تشغيلية لمدة 12 أسبوعاً' },
@@ -568,6 +577,194 @@ export const MINISTER_COPY: MinisterStepCopy[] = [
     },
   },
 ];
+
+/* ---------------- 9b. Ministry value step (Minister Mode, step 7 of 8) ---------------- */
+
+export interface MinistryBarrier {
+  id: string;
+  barrier: Bi;
+  answer: Bi;
+}
+
+export interface MinistryGoal {
+  id: string;
+  title: Bi;
+  line: Bi;
+  /** What SooqRoot measures for this goal, shown as a chip. */
+  measure: Bi;
+}
+
+export interface MinistryColumn {
+  id: string;
+  label: Bi;
+  lines: Bi[];
+}
+
+export const MINISTRY_VALUE: {
+  barriersLabel: Bi;
+  barriers: MinistryBarrier[];
+  goalsLabel: Bi;
+  goals: MinistryGoal[];
+  headline: Bi;
+  columns: MinistryColumn[];
+} = {
+  barriersLabel: { en: 'The barrier, and what SooqRoot does', ar: 'العائق، وما يفعله SooqRoot' },
+  barriers: [
+    {
+      id: 'mv-b1',
+      barrier: { en: 'Which farms can supply?', ar: 'أي المزارع تستطيع التوريد؟' },
+      answer: { en: 'One order, split across several local farms.', ar: 'طلب واحد يُوزَّع على عدة مزارع محلية.' },
+    },
+    {
+      id: 'mv-b2',
+      barrier: { en: 'No single farm has enough volume', ar: 'لا تملك مزرعة واحدة كمية كافية' },
+      answer: {
+        en: 'Every share confirmed before harvest, with a backup farm.',
+        ar: 'تأكيد كل حصة قبل الحصاد، مع مزرعة احتياطية.',
+      },
+    },
+    {
+      id: 'mv-b3',
+      barrier: { en: 'Quality varies', ar: 'تفاوت الجودة' },
+      answer: {
+        en: "The specification is written on the farmer's harvest card.",
+        ar: 'المواصفات مكتوبة على بطاقة الحصاد لدى المزارع.',
+      },
+    },
+    {
+      id: 'mv-b4',
+      barrier: { en: 'Delivery is unreliable', ar: 'التوصيل غير منتظم' },
+      answer: {
+        en: 'A local partner delivers one consolidated shipment.',
+        ar: 'شريك محلي يسلّم شحنة واحدة مجمّعة.',
+      },
+    },
+  ],
+  goalsLabel: { en: 'National goals it serves, and what it measures', ar: 'الأهداف الوطنية التي يخدمها، وما يقيسه' },
+  goals: [
+    {
+      id: 'mv-g1',
+      title: { en: 'Emirati farmers, "the backbone"', ar: 'المزارع الإماراتي، "العمود الفقري"' },
+      line: {
+        en: 'Confirmed income before harvest, free for farmers',
+        ar: 'دخل مؤكد قبل الحصاد، ومجاني للمزارعين',
+      },
+      measure: { en: 'Farmer price vs brokers', ar: 'سعر المزارع مقارنة بالوسطاء' },
+    },
+    {
+      id: 'mv-g2',
+      title: { en: "ne'ma and Plant the Emirates", ar: 'نعمة وازرع الإمارات' },
+      line: {
+        en: 'Grow to confirmed demand and cut food loss',
+        ar: 'الزراعة وفق طلب مؤكد لخفض الفاقد',
+      },
+      measure: { en: 'Food loss avoided', ar: 'الفاقد الغذائي المتجنَّب' },
+    },
+    {
+      id: 'mv-g3',
+      title: {
+        en: 'National Food Security Strategy 2051',
+        ar: 'الاستراتيجية الوطنية للأمن الغذائي 2051',
+      },
+      line: {
+        en: 'Less dependence on imports, fresher food',
+        ar: 'اعتماد أقل على الاستيراد وغذاء أكثر طزاجة',
+      },
+      measure: { en: 'Local tonnes sourced', ar: 'الأطنان المحلية المورَّدة' },
+    },
+    {
+      id: 'mv-g4',
+      title: {
+        en: 'Food safety, Federal Law No. 10 of 2015',
+        ar: 'سلامة الغذاء، القانون الاتحادي رقم 10 لسنة 2015',
+      },
+      line: { en: 'Every batch traceable to its farm', ar: 'تتبّع كل دفعة حتى مزرعتها' },
+      measure: { en: 'QR batch passports', ar: 'جوازات الدفعات برمز QR' },
+    },
+    {
+      id: 'mv-g5',
+      title: {
+        en: 'Single use plastics, Ministerial Decision No. 380 of 2022',
+        ar: 'البلاستيك أحادي الاستخدام، القرار الوزاري رقم 380 لسنة 2022',
+      },
+      line: {
+        en: 'Packaging checked on every order, reusable crates',
+        ar: 'فحص التغليف في كل طلب وصناديق قابلة لإعادة الاستخدام',
+      },
+      measure: { en: 'Compliant packaging', ar: 'التغليف المطابق' },
+    },
+    {
+      id: 'mv-g6',
+      title: { en: 'Net Zero 2050', ar: 'الحياد المناخي 2050' },
+      line: {
+        en: 'Local sourcing and fuller collection runs',
+        ar: 'توريد محلي ورحلات جمع أكثر امتلاءً',
+      },
+      measure: { en: 'Food miles and CO2e avoided', ar: 'أميال الغذاء وانبعاثات CO2e المتجنَّبة' },
+    },
+    {
+      id: 'mv-g7',
+      title: {
+        en: 'AI and data, "the new language of agriculture"',
+        ar: 'الذكاء الاصطناعي والبيانات، "لغة الزراعة الجديدة"',
+      },
+      line: {
+        en: 'AI reads orders, matches farms and reallocates shortfalls',
+        ar: 'يقرأ الطلبات ويطابقها مع المزارع ويعيد توزيع النقص',
+      },
+      measure: { en: 'Fulfilment rate', ar: 'نسبة التنفيذ' },
+    },
+    {
+      id: 'mv-g8',
+      title: { en: "Builds on the Centre's work", ar: 'يبني على عمل المركز' },
+      line: {
+        en: "NRTC grading and packing, the RAK Farmers' Council, retail partners",
+        ar: 'معايير الفرز والتعبئة مع NRTC، ومجلس مزارعي رأس الخيمة، وشركاء التجزئة',
+      },
+      measure: { en: 'Partners in every order', ar: 'شركاء في كل طلب' },
+    },
+  ],
+  headline: {
+    en: 'Every agreement the Centre signs becomes a live stream of orders, not a statement of intent.',
+    ar: 'كل اتفاقية يوقّعها المركز تتحول إلى تدفق مستمر من الطلبات، لا مجرد إعلان نوايا.',
+  },
+  columns: [
+    {
+      id: 'mv-c1',
+      label: { en: 'The Ministry puts in', ar: 'ما تقدّمه الوزارة' },
+      lines: [
+        { en: 'An MoU with the National Agriculture Centre', ar: 'مذكرة تفاهم مع المركز الوطني للزراعة' },
+        { en: 'Introductions to farms and hotel partners', ar: 'تعريف بالمزارع وشركاء الضيافة' },
+        { en: 'About AED 200,000 (estimate)', ar: 'نحو 200,000 درهم (تقديري)' },
+      ],
+    },
+    {
+      id: 'mv-c2',
+      label: { en: 'What comes back (estimates)', ar: 'العائد (تقديرات)' },
+      lines: [
+        {
+          en: 'About 3x local food spend per dirham in the pilot',
+          ar: 'نحو 3 أضعاف الإنفاق على الغذاء المحلي لكل درهم في التجربة',
+        },
+        { en: 'About 78x by the end of Year 1', ar: 'نحو 78 ضعفًا بنهاية السنة الأولى' },
+        {
+          en: 'About AED 2 million extra farmer income in Year 1',
+          ar: 'نحو 2 مليون درهم دخلًا إضافيًا للمزارعين في السنة الأولى',
+        },
+      ],
+    },
+    {
+      id: 'mv-c3',
+      label: { en: 'Risk', ar: 'المخاطر' },
+      lines: [
+        {
+          en: 'Low. No trucks or warehouses, a small time bound pilot, success measures agreed in advance.',
+          ar: 'منخفضة. لا شاحنات ولا مستودعات، وتجربة صغيرة محددة المدة، ومقاييس نجاح متفق عليها مسبقًا.',
+        },
+      ],
+    },
+  ],
+};
 
 export const COMPANY = {
   name: { en: 'SooqRoot', ar: 'سوق روت' },
