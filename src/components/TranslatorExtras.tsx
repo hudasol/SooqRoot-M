@@ -66,7 +66,7 @@ export function HarvestCardPreview({
       productId={productId}
       spec={spec}
       qtyKg={qtyKg}
-      deliverBy={formatDate(requiredBy, 'long')}
+      deliverBy={formatDate(requiredBy, 'long', lang === 'ar' ? 'ar' : 'en')}
       farmCode={farmCode}
     />
   );

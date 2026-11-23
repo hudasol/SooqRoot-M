@@ -109,9 +109,19 @@ export function formatQty(value: number, unit: string): string {
   return `${value.toLocaleString('en-AE', { maximumFractionDigits: 0 })} ${unit}`;
 }
 
-export function formatDate(iso: string, style: 'short' | 'long' | 'day' = 'short'): string {
+/** Pass lang "ar" to get the Arabic month name, with Western digits like the rest of the product. */
+export function formatDate(iso: string, style: 'short' | 'long' | 'day' = 'short', lang: 'en' | 'ar' = 'en'): string {
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return iso;
+  if (lang === 'ar') {
+    const opts: Intl.DateTimeFormatOptions =
+      style === 'long'
+        ? { day: 'numeric', month: 'long', year: 'numeric' }
+        : style === 'day'
+          ? { weekday: 'short', day: 'numeric', month: 'short' }
+          : { day: 'numeric', month: 'short' };
+    return d.toLocaleDateString('ar-AE-u-nu-latn', { ...opts, timeZone: 'UTC' });
+  }
   if (style === 'long')
     return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
   if (style === 'day') return d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });

@@ -142,7 +142,7 @@ function ShortfallModal({ order, farmId, onClose }: { order: Order; farmId: stri
               productAr: product.nameAr,
               productUr: PRODUCT_UR[order.productId] ?? product.name,
               ref: order.ref,
-              date: formatDate(mine?.harvestDate ?? order.requiredBy, 'long'),
+              date: formatDate(mine?.harvestDate ?? order.requiredBy, 'long', lang === 'ar' ? 'ar' : 'en'),
               pack: order.packaging,
             });
             return (

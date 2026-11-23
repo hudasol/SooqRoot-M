@@ -70,7 +70,7 @@ export function FarmerCopilot() {
       .replace('{product}', product ? (lang === 'ar' ? product.nameAr : product.name) : ', ')
       .replace('{grade}', farmCommitment?.order.grade ?? 'A')
       .replace('{order}', farmCommitment?.order.ref ?? ', ')
-      .replace('{date}', farmCommitment ? formatDate(farmCommitment.allocation.harvestDate, 'long') : ', ')
+      .replace('{date}', farmCommitment ? formatDate(farmCommitment.allocation.harvestDate, 'long', lang) : ', ')
       .replace('{packaging}', farmCommitment?.order.packaging ?? ', ');
     setDraft(filled);
   };
