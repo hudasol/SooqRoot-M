@@ -156,15 +156,17 @@ Quotes may be shortened for space but never changed in meaning. Region names are
 
 ## 9. Minister Mode copy (FINAL)
 
-| Step | Headline | Supporting line |
-|---|---|---|
-| Cover | One order. Many farms. Confirmed before harvest. | Huda Mueen, Founder and CEO |
-| 1. Buyer order | The buyer writes it the way they already do | SooqRoot turns it into an exact specification |
-| 2. Commitment | Many farms, one reliable supplier | Fresh produce, dates, honey and fish, coordinated as one supply |
-| 3. Farmer message | Every farmer receives clear instructions in Arabic, on WhatsApp | Harvest, grading and packing, confirmed before harvest |
-| 4. National impact | The numbers the national targets need | Local share against 25%, food loss avoided, packaging compliance |
-| 5. Progress | From the ministry's hackathon to version 2 | Built on the incubation's advice and the voices of UAE farmers |
-| 6. Pilot | Ready for a 12 week pilot | Up to ten farms, five buyers and three crops |
+| Step | Headline | Supporting line (English) | Supporting line (Arabic) |
+|---|---|---|---|
+| Cover | One order. Many farms. Confirmed before harvest. | Huda Mueen, Founder and CEO | هدى معين، المؤسِّسة والرئيسة التنفيذية |
+| 1. Buyer order | The buyer writes it the way they already do | AI and data are the new language of agriculture. SooqRoot turns the order into an exact specification. | الذكاء الاصطناعي والبيانات لغة الزراعة الجديدة. يحوّل سوق روت الطلب إلى مواصفات دقيقة. |
+| 2. Commitment | Many farms, one reliable supplier | Bridging the marketing gap for UAE farmers: fresh produce, dates, honey and fish, as one supply. | سدّ الفجوة التسويقية أمام مزارعي الإمارات: الخضروات والتمور والعسل والأسماك، كإمداد واحد. |
+| 3. Farmer message | Every farmer receives clear instructions in Arabic, on WhatsApp | The Emirati farmer is the backbone. Harvest, grading and packing, confirmed before harvest. | المزارع الإماراتي هو العمود الفقري. الحصاد والفرز والتعبئة، مؤكدة قبل الحصاد. |
+| 4. National impact | The numbers the national targets need | From supporting production to creating market demand: local share against 25%, food loss, packaging. | من دعم الإنتاج إلى ضمان الاستهلاك وخلق طلب سوقي: الحصة المحلية مقابل 25%، والفاقد المتجنَّب، والالتزام بالتعبئة. |
+| 5. Progress | From the ministry's hackathon to version 2 | Built on the incubation's advice and the voices of UAE farmers | مبني على نصائح الحاضنة وأصوات المزارعين في الإمارات |
+| 6. Pilot | Ready for a 12 week pilot | Stable, long term demand for local produce: up to ten farms, five buyers and three crops. | طلب مستقر وطويل الأمد على المنتج المحلي: حتى عشر مزارع وخمسة مشترين وثلاثة محاصيل. |
+
+The English line for step 4 is shortened from "...food loss avoided, packaging compliance." so that it stays on one line at 1180 x 820.
 
 ---
 
