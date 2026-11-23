@@ -349,7 +349,7 @@ export function ControlTower() {
                           <Avatar
                             key={a.id}
                             src={farmPhoto(a.farmId, 80, 80)}
-                            alt={a.farmId}
+                            alt={farmName(a.farmId)}
                             size={26}
                           />
                         ))}

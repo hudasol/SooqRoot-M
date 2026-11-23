@@ -18,6 +18,7 @@ import { CountUp, Reveal, useSettle } from '../components/ui/Motion';
 import { MapLegend, SupplyMap } from '../components/viz/SupplyMap';
 import { PRODUCTS, getProduct } from '../data/products';
 import { farmPhoto, productPhoto } from '../data/media';
+import { farmName } from '../data/farms';
 import { allocatable } from '../lib/engine';
 import { KindFilter, KindFilterBar, KindBadge, MethodTag } from '../components/KindBadge';
 import { PARTNERS } from '../data/partners';
@@ -371,7 +372,7 @@ function CropRow({
           <span>{row.farmIds.length} farm{row.farmIds.length === 1 ? '' : 's'}</span>
           <span className="flex -space-x-1.5">
             {row.farmIds.slice(0, 4).map((id) => (
-              <Avatar key={id} src={farmPhoto(id, 48, 48)} alt={id} size={16} />
+              <Avatar key={id} src={farmPhoto(id, 48, 48)} alt={farmName(id)} size={16} />
             ))}
           </span>
         </div>
